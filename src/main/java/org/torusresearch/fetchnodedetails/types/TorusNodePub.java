@@ -1,4 +1,4 @@
-package us.tor.fetchnodedetails.types;
+package org.torusresearch.fetchnodedetails.types;
 
 public final class TorusNodePub implements Cloneable {
     private final String X;
@@ -15,10 +15,5 @@ public final class TorusNodePub implements Cloneable {
 
     public String getY() {
         return Y;
-    }
-
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return new TorusNodePub(this.X, this.Y);
     }
 }

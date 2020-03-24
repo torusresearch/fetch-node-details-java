@@ -1,6 +1,7 @@
-package us.tor.fetchnodedetails;
+package org.torusresearch.fetchnodedetails;
 
 
+import org.torusresearch.fetchnodedetails.types.*;
 import org.web3j.crypto.Credentials;
 import org.web3j.protocol.Web3j;
 import org.web3j.protocol.http.HttpService;
@@ -8,7 +9,6 @@ import org.web3j.tuples.generated.Tuple6;
 import org.web3j.tuples.generated.Tuple7;
 import org.web3j.tx.gas.DefaultGasProvider;
 import org.web3j.utils.Numeric;
-import us.tor.fetchnodedetails.types.*;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ public class FetchNodeDetails {
     private EthereumNetwork network = EthereumNetwork.MAINNET;
     private String proxyAddress = "0x638646503746d5456209e33a2ff5e3226d698bea";
     private NodeListProxy proxyContract;
-    private NodeDetails nodeDetails = new NodeDetails();
+    private final NodeDetails nodeDetails = new NodeDetails();
 
     public FetchNodeDetails() {
         this.setupWeb3();
@@ -39,7 +39,7 @@ public class FetchNodeDetails {
 //            // var epoch = fetchNodeDetails.getCurrentEpoch().get();
 //            NodeDetails nodeDetails = fetchNodeDetails.getNodeDetails().get();
 //            String[] epoch = nodeDetails.getTorusNodeEndpoints();
-//            Arrays.stream(epoch).forEach(x -> System.out.println(x));
+//            Arrays.stream(epoch).forEach(System.out::println);
 //
 //        } catch (Exception e) {
 //            System.out.println(e.toString());

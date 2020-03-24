@@ -1,4 +1,4 @@
-package us.tor.fetchnodedetails.types;
+package org.torusresearch.fetchnodedetails.types;
 
 import java.math.BigInteger;
 
