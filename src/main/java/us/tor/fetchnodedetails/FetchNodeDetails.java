@@ -11,7 +11,7 @@ import org.web3j.utils.Numeric;
 import us.tor.fetchnodedetails.types.*;
 
 import java.math.BigInteger;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
@@ -80,14 +80,14 @@ public class FetchNodeDetails {
         }).thenComposeAsync((latestEpochInfo) -> {
             String[] nodeList = latestEpochInfo.getNodeList();
             BigInteger[] _torusIndexes = new BigInteger[nodeList.length];
-            CompletableFuture<NodeInfo>[] futures = new CompletableFuture[nodeList.length];
+            List<CompletableFuture<NodeInfo>> futures = new ArrayList<>(nodeList.length);
             for (int i = 0, size = nodeList.length; i < size; i++) {
                 _torusIndexes[i] = new BigInteger(Integer.toString(i + 1));
-                futures[i] = this.getNodeEndpoint(nodeList[i]);
+                futures.add(this.getNodeEndpoint(nodeList[i]));
             }
             this.nodeDetails.setTorusIndexes(_torusIndexes);
-            CompletableFuture<Void> allFutures = CompletableFuture.allOf(futures);
-            return allFutures.thenComposeAsync(v -> CompletableFuture.supplyAsync(() -> Arrays.stream(futures).map(CompletableFuture::join).collect(Collectors.toList()))
+            CompletableFuture<Void> allFutures = CompletableFuture.allOf(futures.toArray(new CompletableFuture[0]));
+            return allFutures.thenComposeAsync(v -> CompletableFuture.supplyAsync(() -> futures.stream().map(CompletableFuture::join).collect(Collectors.toList()))
             );
         }).thenComposeAsync((nodeEndPointsList) -> {
             NodeInfo[] nodeEndPoints = nodeEndPointsList.toArray(new NodeInfo[0]);
