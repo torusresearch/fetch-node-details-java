@@ -18,13 +18,13 @@ import java.util.stream.Collectors;
 
 public class FetchNodeDetails {
 
-    private EthereumNetwork network = EthereumNetwork.MAINNET;
-    private String proxyAddress = "0x638646503746d5456209e33a2ff5e3226d698bea";
+    private final EthereumNetwork network;
+    private final String proxyAddress;
     private NodeListProxy proxyContract;
     private final NodeDetails nodeDetails = new NodeDetails();
 
     public FetchNodeDetails() {
-        this.setupWeb3();
+        this(EthereumNetwork.MAINNET, "0x638646503746d5456209e33a2ff5e3226d698bea");
     }
 
     public FetchNodeDetails(EthereumNetwork network, String proxyAddress) {
