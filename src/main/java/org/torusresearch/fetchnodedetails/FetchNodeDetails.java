@@ -39,8 +39,12 @@ public class FetchNodeDetails {
 //            // var epoch = fetchNodeDetails.getCurrentEpoch().get();
 //            NodeDetails nodeDetails = fetchNodeDetails.getNodeDetails().get();
 //            String[] epoch = nodeDetails.getTorusNodeEndpoints();
+//            TorusNodePub[] items = nodeDetails.getTorusNodePub();
+//            BigInteger[] indexes = nodeDetails.getTorusIndexes();
+//            Arrays.stream(items).forEach(System.out::println);
 //            Arrays.stream(epoch).forEach(System.out::println);
-//
+//            Arrays.stream(indexes).forEach(System.out::println);
+//            System.out.println(nodeDetails);
 //        } catch (Exception e) {
 //            System.out.println(e.toString());
 //        }
