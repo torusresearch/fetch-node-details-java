@@ -1,6 +1,6 @@
 package org.torusresearch.fetchnodedetails.types;
 
-public final class TorusNodePub {
+public class TorusNodePub {
     private final String X;
     private final String Y;
 
