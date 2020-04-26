@@ -1,6 +1,6 @@
 package org.torusresearch.fetchnodedetails.types;
 
-public final class TorusNodePub implements Cloneable {
+public final class TorusNodePub {
     private final String X;
     private final String Y;
 
@@ -15,5 +15,13 @@ public final class TorusNodePub implements Cloneable {
 
     public String getY() {
         return Y;
+    }
+
+    @Override
+    public String toString() {
+        return "TorusNodePub{" +
+                "X='" + X + '\'' +
+                ", Y='" + Y + '\'' +
+                '}';
     }
 }

@@ -1,5 +1,7 @@
 package org.torusresearch.fetchnodedetails.types;
 
+import java.util.Arrays;
+
 public final class EpochInfo {
     private final String id;
     private final String n;
@@ -45,5 +47,18 @@ public final class EpochInfo {
 
     public String[] getNodeList() {
         return nodeList.clone();
+    }
+
+    @Override
+    public String toString() {
+        return "EpochInfo{" +
+                "id='" + id + '\'' +
+                ", n='" + n + '\'' +
+                ", k='" + k + '\'' +
+                ", t='" + t + '\'' +
+                ", nodeList=" + Arrays.toString(nodeList) +
+                ", prevEpoch='" + prevEpoch + '\'' +
+                ", nextEpoch='" + nextEpoch + '\'' +
+                '}';
     }
 }

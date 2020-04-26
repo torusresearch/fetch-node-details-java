@@ -40,4 +40,16 @@ public final class NodeInfo {
     public String getTmP2PListenAddress() {
         return tmP2PListenAddress;
     }
+
+    @Override
+    public String toString() {
+        return "NodeInfo{" +
+                "declaredIp='" + declaredIp + '\'' +
+                ", position='" + position + '\'' +
+                ", pubKx='" + pubKx + '\'' +
+                ", pubKy='" + pubKy + '\'' +
+                ", tmP2PListenAddress='" + tmP2PListenAddress + '\'' +
+                ", p2pListenAddress='" + p2pListenAddress + '\'' +
+                '}';
+    }
 }

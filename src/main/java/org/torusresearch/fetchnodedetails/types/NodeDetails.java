@@ -1,6 +1,7 @@
 package org.torusresearch.fetchnodedetails.types;
 
 import java.math.BigInteger;
+import java.util.Arrays;
 
 public class NodeDetails {
     private String currentEpoch;
@@ -68,5 +69,17 @@ public class NodeDetails {
 
     public void setTorusNodePub(TorusNodePub[] torusNodePub) {
         this.torusNodePub = torusNodePub.clone();
+    }
+
+    @Override
+    public String toString() {
+        return "NodeDetails{" +
+                "currentEpoch='" + currentEpoch + '\'' +
+                ", nodeListAddress='" + nodeListAddress + '\'' +
+                ", torusNodeEndpoints=" + Arrays.toString(torusNodeEndpoints) +
+                ", torusIndexes=" + Arrays.toString(torusIndexes) +
+                ", torusNodePub=" + Arrays.toString(torusNodePub) +
+                ", updated=" + updated +
+                '}';
     }
 }
