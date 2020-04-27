@@ -8,7 +8,6 @@ import org.web3j.protocol.http.HttpService;
 import org.web3j.tuples.generated.Tuple6;
 import org.web3j.tuples.generated.Tuple7;
 import org.web3j.tx.gas.DefaultGasProvider;
-import org.web3j.utils.Numeric;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -20,8 +19,8 @@ public class FetchNodeDetails {
 
     private final EthereumNetwork network;
     private final String proxyAddress;
-    private NodeListProxy proxyContract;
     private final NodeDetails nodeDetails = new NodeDetails();
+    private NodeListProxy proxyContract;
 
     public FetchNodeDetails() {
         this(EthereumNetwork.MAINNET, "0x638646503746d5456209e33a2ff5e3226d698bea");
@@ -69,8 +68,8 @@ public class FetchNodeDetails {
     public CompletableFuture<NodeInfo> getNodeEndpoint(String nodeEthAddress) {
         return this.proxyContract.getNodeDetails(nodeEthAddress).sendAsync().thenComposeAsync(
                 (Tuple6<String, BigInteger, BigInteger, BigInteger, String, String> result) -> CompletableFuture.supplyAsync(() ->
-                        new NodeInfo(result.component1(), result.component2().toString(), result.component3().toString(),
-                                result.component4().toString(), result.component5(), result.component6())
+                        new NodeInfo(result.component1(), result.component2().toString(), result.component3().toString(16),
+                                result.component4().toString(16), result.component5(), result.component6())
                 )
         );
     }
@@ -101,8 +100,7 @@ public class FetchNodeDetails {
                 NodeInfo endPointElement = nodeEndPoints[i];
                 String endpoint = "https://" + endPointElement.getDeclaredIp().split(":")[0] + "/jrpc";
                 updatedEndpoints[i] = endpoint;
-                updatedNodePub[i] = new TorusNodePub(Numeric.toHexStringNoPrefix(endPointElement.getPubKx().getBytes()),
-                        Numeric.toHexStringNoPrefix(endPointElement.getPubKy().getBytes()));
+                updatedNodePub[i] = new TorusNodePub(endPointElement.getPubKx(), endPointElement.getPubKy());
             }
             this.nodeDetails.setTorusNodeEndpoints(updatedEndpoints);
             this.nodeDetails.setTorusNodePub(updatedNodePub);
