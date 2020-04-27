@@ -31,14 +31,14 @@ class FetchNodeDetailsTest {
     @Test
     public void shouldGetCurrentEpoch() throws ExecutionException, InterruptedException {
         BigInteger epoch = this.fetchNodeDetails.getCurrentEpoch().get();
-        assertEquals(epoch, this.currentEpoch);
+        assertEquals(this.currentEpoch, epoch);
     }
 
     @DisplayName("Gets the Epoch Info")
     @Test
     public void shouldGetEpochInfo() throws ExecutionException, InterruptedException {
         EpochInfo epochInfo = this.fetchNodeDetails.getEpochInfo(this.currentEpoch).get();
-        assertEquals(epochInfo.toString(), EPOCH_18_INFO);
+        assertEquals(EPOCH_18_INFO, epochInfo.toString());
     }
 
     @DisplayName("Gets the First Node Endpoint")
@@ -46,14 +46,14 @@ class FetchNodeDetailsTest {
     public void shouldGetNodeEndpoint() throws ExecutionException, InterruptedException {
         EpochInfo epochInfo = this.fetchNodeDetails.getEpochInfo(this.currentEpoch).get();
         NodeInfo nodeInfo = this.fetchNodeDetails.getNodeEndpoint(epochInfo.getNodeList()[0]).get();
-        assertEquals(nodeInfo.toString(), FIRST_NODE_INFO);
+        assertEquals(FIRST_NODE_INFO, nodeInfo.toString());
     }
 
     @DisplayName("Gets the Node details")
     @Test
     public void shouldGetNodeDetails() throws ExecutionException, InterruptedException {
         NodeDetails nodeDetails = this.fetchNodeDetails.getNodeDetails().get();
-        assertEquals(nodeDetails.toString(), NODE_DETAILS);
+        assertEquals(NODE_DETAILS, nodeDetails.toString());
     }
 
 }
