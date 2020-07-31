@@ -74,11 +74,11 @@ public class FetchNodeDetails {
 
     public CompletableFuture<NodeDetails> getNodeDetails() {
         if (this.nodeDetails.getUpdated()) return CompletableFuture.supplyAsync(() -> this.nodeDetails);
-        return this.getCurrentEpoch().thenComposeAsync((epoch) -> {
+        return this.getCurrentEpoch().thenCompose((epoch) -> {
             this.nodeDetails.setNodeListAddress(this.proxyAddress);
             this.nodeDetails.setCurrentEpoch(epoch.toString());
             return this.getEpochInfo(epoch);
-        }).thenComposeAsync((latestEpochInfo) -> {
+        }).thenCompose((latestEpochInfo) -> {
             String[] nodeList = latestEpochInfo.getNodeList();
             BigInteger[] _torusIndexes = new BigInteger[nodeList.length];
             List<CompletableFuture<NodeInfo>> futures = new ArrayList<>(nodeList.length);
@@ -90,7 +90,7 @@ public class FetchNodeDetails {
             CompletableFuture<Void> allFutures = CompletableFuture.allOf(futures.toArray(new CompletableFuture[0]));
             return allFutures.thenApply(v -> futures.stream().map(CompletableFuture::join).collect(Collectors.toList())
             );
-        }).thenApplyAsync((nodeEndPointsList) -> {
+        }).thenApply((nodeEndPointsList) -> {
             NodeInfo[] nodeEndPoints = nodeEndPointsList.toArray(new NodeInfo[0]);
             String[] updatedEndpoints = new String[nodeEndPoints.length];
             TorusNodePub[] updatedNodePub = new TorusNodePub[nodeEndPoints.length];
