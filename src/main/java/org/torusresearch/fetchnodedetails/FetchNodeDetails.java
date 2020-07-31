@@ -88,7 +88,7 @@ public class FetchNodeDetails {
             }
             this.nodeDetails.setTorusIndexes(_torusIndexes);
             CompletableFuture<Void> allFutures = CompletableFuture.allOf(futures.toArray(new CompletableFuture[0]));
-            return allFutures.thenCompose(v -> CompletableFuture.supplyAsync(() -> futures.stream().map(CompletableFuture::join).collect(Collectors.toList()))
+            return allFutures.thenApply(v -> futures.stream().map(CompletableFuture::join).collect(Collectors.toList())
             );
         }).thenApplyAsync((nodeEndPointsList) -> {
             NodeInfo[] nodeEndPoints = nodeEndPointsList.toArray(new NodeInfo[0]);
@@ -116,6 +116,5 @@ public class FetchNodeDetails {
     private String getProxyUrl() {
         return "https://api.infura.io/v1/jsonrpc/" + this.network.toString().toLowerCase();
     }
-
 
 }
