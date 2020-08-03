@@ -1,6 +1,7 @@
 package org.torusresearch.fetchnodedetails;
 
 
+import java8.util.concurrent.CompletableFuture;
 import org.torusresearch.fetchnodedetails.types.*;
 import org.web3j.crypto.Credentials;
 import org.web3j.protocol.Web3j;
@@ -12,7 +13,6 @@ import org.web3j.tx.gas.DefaultGasProvider;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
 public class FetchNodeDetails {
