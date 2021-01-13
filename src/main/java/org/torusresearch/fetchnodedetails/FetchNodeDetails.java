@@ -17,9 +17,9 @@ import java.util.stream.Collectors;
 
 public class FetchNodeDetails {
 
-    private final EthereumNetwork network;
     private final String proxyAddress;
     private final NodeDetails nodeDetails = new NodeDetails();
+    private final String providerUrl;
     private NodeListProxy proxyContract;
 
     public FetchNodeDetails() {
@@ -27,8 +27,14 @@ public class FetchNodeDetails {
     }
 
     public FetchNodeDetails(EthereumNetwork network, String proxyAddress) {
-        this.network = network;
         this.proxyAddress = proxyAddress;
+        this.providerUrl = "https://" + network.toString().toLowerCase() + ".infura.io/v3/" + "b8cdb0e4cff24599a286bf8e87ff1c96";
+        this.setupWeb3();
+    }
+
+    public FetchNodeDetails(String proxyAddress, String providerUrl) {
+        this.proxyAddress = proxyAddress;
+        this.providerUrl = providerUrl;
         this.setupWeb3();
     }
 
@@ -108,13 +114,8 @@ public class FetchNodeDetails {
     }
 
     private void setupWeb3() {
-        Web3j web3j = Web3j.build(new HttpService(this.getProxyUrl()));
+        Web3j web3j = Web3j.build(new HttpService(this.providerUrl));
         Credentials credentials = Credentials.create("0x5bbbef76458bf30511c9ee6ed56783644eb339258d02656755c68098c4809130");
         this.proxyContract = new NodeListProxy(this.proxyAddress, web3j, credentials, new DefaultGasProvider());
     }
-
-    private String getProxyUrl() {
-        return "https://api.infura.io/v1/jsonrpc/" + this.network.toString().toLowerCase();
-    }
-
 }
