@@ -1,8 +1,11 @@
 package org.torusresearch.fetchnodedetails;
 
 
-import java8.util.concurrent.CompletableFuture;
-import org.torusresearch.fetchnodedetails.types.*;
+import org.torusresearch.fetchnodedetails.types.EpochInfo;
+import org.torusresearch.fetchnodedetails.types.EthereumNetwork;
+import org.torusresearch.fetchnodedetails.types.NodeDetails;
+import org.torusresearch.fetchnodedetails.types.NodeInfo;
+import org.torusresearch.fetchnodedetails.types.TorusNodePub;
 import org.web3j.crypto.Credentials;
 import org.web3j.protocol.Web3j;
 import org.web3j.protocol.http.HttpService;
@@ -13,7 +16,8 @@ import org.web3j.tx.gas.DefaultGasProvider;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+
+import java8.util.concurrent.CompletableFuture;
 
 public class FetchNodeDetails {
 
@@ -94,10 +98,15 @@ public class FetchNodeDetails {
             }
             this.nodeDetails.setTorusIndexes(_torusIndexes);
             CompletableFuture<Void> allFutures = CompletableFuture.allOf(futures.toArray(new CompletableFuture[0]));
-            return allFutures.thenApply(v -> futures.stream().map(CompletableFuture::join).collect(Collectors.toList())
-            );
-        }).thenApply((nodeEndPointsList) -> {
-            NodeInfo[] nodeEndPoints = nodeEndPointsList.toArray(new NodeInfo[0]);
+            return allFutures.thenApply(v -> {
+                // futures.stream().map(CompletableFuture::join).collect(Collectors.toList()
+                NodeInfo[] nodeInfoArray = new NodeInfo[nodeList.length];
+                for (int i = 0; i < futures.size(); i++) {
+                    nodeInfoArray[i] = futures.get(i).join();
+                }
+                return nodeInfoArray;
+            });
+        }).thenApply((nodeEndPoints) -> {
             String[] updatedEndpoints = new String[nodeEndPoints.length];
             TorusNodePub[] updatedNodePub = new TorusNodePub[nodeEndPoints.length];
             for (int i = 0, size = nodeEndPoints.length; i < size; i++) {
