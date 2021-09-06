@@ -1,11 +1,8 @@
 package org.torusresearch.fetchnodedetails;
 
 
-import org.torusresearch.fetchnodedetails.types.EpochInfo;
-import org.torusresearch.fetchnodedetails.types.EthereumNetwork;
-import org.torusresearch.fetchnodedetails.types.NodeDetails;
-import org.torusresearch.fetchnodedetails.types.NodeInfo;
-import org.torusresearch.fetchnodedetails.types.TorusNodePub;
+import java8.util.concurrent.CompletableFuture;
+import org.torusresearch.fetchnodedetails.types.*;
 import org.web3j.crypto.Credentials;
 import org.web3j.protocol.Web3j;
 import org.web3j.protocol.http.HttpService;
@@ -16,8 +13,6 @@ import org.web3j.tx.gas.DefaultGasProvider;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
-
-import java8.util.concurrent.CompletableFuture;
 
 public class FetchNodeDetails {
 

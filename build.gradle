@@ -5,7 +5,7 @@ plugins {
 apply plugin: 'maven'
 
 group 'org.torusresearch'
-version '1.0.9'
+version '1.0.10'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -16,9 +16,10 @@ repositories {
 
 dependencies {
     implementation 'org.web3j:core:4.6.0-android'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.1'
-    testImplementation 'org.slf4j:slf4j-simple:1.7.30'
+    api 'net.sourceforge.streamsupport:streamsupport-cfuture:1.7.3'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
+    testImplementation 'org.slf4j:slf4j-simple:1.7.32'
 }
 
 test {
