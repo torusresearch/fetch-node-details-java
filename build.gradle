@@ -15,7 +15,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.web3j:core:4.6.0-android'
+    implementation 'org.web3j:core:4.9.1'
     api 'net.sourceforge.streamsupport:streamsupport-cfuture:1.7.3'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
