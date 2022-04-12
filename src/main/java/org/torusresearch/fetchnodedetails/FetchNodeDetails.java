@@ -57,16 +57,15 @@ public class FetchNodeDetails {
 //    }
 
 
-    public CompletableFuture<NodeDetails> getNodeDetails() throws UnsupportedEncodingException {
+    public CompletableFuture<NodeDetails> getNodeDetails(String verifierid, String verifier) throws UnsupportedEncodingException {
         if (this.nodeDetails.getUpdated()) return CompletableFuture.supplyAsync(() -> this.nodeDetails);
-        String verifierid = "hello@tor.us";
         String encodedVerifierId = URLEncoder.encode(verifierid, "utf-8");
         String hash = Hash.sha3(encodedVerifierId).substring(2);
         BigInteger bigInt = new BigInteger(hash, 16);
 
         byte[] hashVerifierId =bigInt.toByteArray();
 
-        return this.torusLookup.getNodeSet("google", hashVerifierId).sendAsync().thenApply((nodeEndPoints) -> {
+        return this.torusLookup.getNodeSet(verifier, hashVerifierId).sendAsync().thenApply((nodeEndPoints) -> {
             String[] updatedEndpoints = new String[nodeEndPoints.component3().size()];
             TorusNodePub[] updatedNodePub = new TorusNodePub[nodeEndPoints.component3().size()];
 

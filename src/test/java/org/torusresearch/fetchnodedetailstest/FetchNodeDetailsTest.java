@@ -27,8 +27,8 @@ class FetchNodeDetailsTest {
     @DisplayName("Gets the Node details")
     @Test
     public void shouldGetNodeDetails() throws ExecutionException, InterruptedException, UnsupportedEncodingException {
-        NodeDetails nodeDetails = this.fetchNodeDetails.getNodeDetails().get();
-       // assertEquals(NODE_DETAILS, nodeDetails.toString());
+        NodeDetails nodeDetails = this.fetchNodeDetails.getNodeDetails("hello@tor.us", "google").get();
+        assertEquals(NODE_DETAILS, nodeDetails.toString());
         System.out.println(nodeDetails);
     }
 
