@@ -22,13 +22,13 @@ public class FetchNodeDetails {
 
     public FetchNodeDetails() {
         this(EthereumNetwork.MAINNET, "0xf20336e16B5182637f09821c27BDe29b0AFcfe80");
-        // this(EthereumNetwork.ROPSTEN, "0x4023d2a0D330bF11426B12C6144Cfb96B7fa6183");
-        // this(EthereumNetwork.POLYGON, "0x6258c9d6c12ed3edda59a1a6527e469517744aa7");
+        // this(EthereumNetwork.ROPSTEN, "0x6258c9d6c12ed3edda59a1a6527e469517744aa7");
+         //this(EthereumNetwork.POLYGON, "0x9f072ba19b3370e512aa1b4bfcdaf97283168005");
     }
 
     public FetchNodeDetails(EthereumNetwork network, String proxyAddress) {
         this.proxyAddress = proxyAddress;
-        this.providerUrl = "https://" + network.name() + ".infura.io/v3/" + "b8cdb0e4cff24599a286bf8e87ff1c96";
+        this.providerUrl = "https://" + network.toString() + ".infura.io/v3/" + "7f287687b3d049e2bea7b64869ee30a3";
         this.setupWeb3();
     }
 
