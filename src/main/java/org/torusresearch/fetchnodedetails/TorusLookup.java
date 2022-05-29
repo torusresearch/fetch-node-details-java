@@ -1,11 +1,5 @@
 package org.torusresearch.fetchnodedetails;
 
-import java.math.BigInteger;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.concurrent.Callable;
-
 import org.web3j.abi.TypeReference;
 import org.web3j.abi.datatypes.DynamicArray;
 import org.web3j.abi.datatypes.Type;
@@ -16,14 +10,19 @@ import org.web3j.protocol.Web3j;
 import org.web3j.protocol.core.RemoteFunctionCall;
 import org.web3j.tuples.generated.Tuple5;
 import org.web3j.tx.Contract;
-import org.web3j.tx.TransactionManager;
 import org.web3j.tx.gas.ContractGasProvider;
+
+import java.math.BigInteger;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.concurrent.Callable;
 
 /**
  * <p>Auto generated code.
  * <p><strong>Do not modify!</strong>
  * <p>Please use the <a href="https://docs.web3j.io/command_line.html">web3j command line tools</a>,
- * or the org.web3j.codegen.SolidityFunctionWrapperGenerator in the 
+ * or the org.web3j.codegen.SolidityFunctionWrapperGenerator in the
  * <a href="https://github.com/web3j/web3j/tree/master/codegen">codegen module</a> to update.
  *
  * <p>Generated with web3j version 1.4.1.
@@ -40,52 +39,32 @@ public class TorusLookup extends Contract {
         _addresses = new HashMap<String, String>();
     }
 
-    @Deprecated
-    protected TorusLookup(String contractAddress, Web3j web3j, Credentials credentials, BigInteger gasPrice, BigInteger gasLimit) {
-        super(BINARY, contractAddress, web3j, credentials, gasPrice, gasLimit);
-    }
-
     protected TorusLookup(String contractAddress, Web3j web3j, Credentials credentials, ContractGasProvider contractGasProvider) {
         super(BINARY, contractAddress, web3j, credentials, contractGasProvider);
     }
 
-    @Deprecated
-    protected TorusLookup(String contractAddress, Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
-        super(BINARY, contractAddress, web3j, transactionManager, gasPrice, gasLimit);
-    }
-
     public RemoteFunctionCall<Tuple5<BigInteger, List<String>, List<BigInteger>, List<BigInteger>, List<BigInteger>>> getNodeSet(String _verifier, byte[] hashedVerifierId) {
-        final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETNODESET, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.Utf8String(_verifier), 
-                new org.web3j.abi.datatypes.generated.Bytes32(hashedVerifierId)), 
-                Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}, new TypeReference<DynamicArray<Utf8String>>() {}, new TypeReference<DynamicArray<Uint256>>() {}, new TypeReference<DynamicArray<Uint256>>() {}, new TypeReference<DynamicArray<Uint256>>() {}));
+        final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETNODESET,
+                Arrays.asList(new org.web3j.abi.datatypes.Utf8String(_verifier),
+                        new org.web3j.abi.datatypes.generated.Bytes32(hashedVerifierId)),
+                Arrays.asList(new TypeReference<Uint256>() {
+                }, new TypeReference<DynamicArray<Utf8String>>() {
+                }, new TypeReference<DynamicArray<Uint256>>() {
+                }, new TypeReference<DynamicArray<Uint256>>() {
+                }, new TypeReference<DynamicArray<Uint256>>() {
+                }));
         return new RemoteFunctionCall<Tuple5<BigInteger, List<String>, List<BigInteger>, List<BigInteger>, List<BigInteger>>>(function,
                 new Callable<Tuple5<BigInteger, List<String>, List<BigInteger>, List<BigInteger>, List<BigInteger>>>() {
                     @Override
                     public Tuple5<BigInteger, List<String>, List<BigInteger>, List<BigInteger>, List<BigInteger>> call() throws Exception {
                         List<Type> results = executeCallMultipleValueReturn(function);
-
                         return new Tuple5<BigInteger, List<String>, List<BigInteger>, List<BigInteger>, List<BigInteger>>(
-                                (BigInteger) results.get(0).getValue(), 
-                                convertToNative((List<Utf8String>) results.get(1).getValue()), 
-                                convertToNative((List<Uint256>) results.get(2).getValue()), 
-                                convertToNative((List<Uint256>) results.get(3).getValue()), 
+                                (BigInteger) results.get(0).getValue(),
+                                convertToNative((List<Utf8String>) results.get(1).getValue()),
+                                convertToNative((List<Uint256>) results.get(2).getValue()),
+                                convertToNative((List<Uint256>) results.get(3).getValue()),
                                 convertToNative((List<Uint256>) results.get(4).getValue()));
                     }
                 });
-    }
-
-    @Deprecated
-    public static TorusLookup load(String contractAddress, Web3j web3j, Credentials credentials, BigInteger gasPrice, BigInteger gasLimit) {
-        return new TorusLookup(contractAddress, web3j, credentials, gasPrice, gasLimit);
-    }
-
-    @Deprecated
-    public static TorusLookup load(String contractAddress, Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
-        return new TorusLookup(contractAddress, web3j, transactionManager, gasPrice, gasLimit);
-    }
-
-    protected String getStaticDeployedAddress(String networkId) {
-        return _addresses.get(networkId);
     }
 }

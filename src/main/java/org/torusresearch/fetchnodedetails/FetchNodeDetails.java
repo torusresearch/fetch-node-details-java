@@ -3,7 +3,7 @@ package org.torusresearch.fetchnodedetails;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.concurrent.CompletableFuture;
+import java8.util.concurrent.CompletableFuture;
 import org.torusresearch.fetchnodedetails.types.*;
 import org.web3j.crypto.Credentials;
 import org.web3j.crypto.Hash;
@@ -28,7 +28,7 @@ public class FetchNodeDetails {
 
     public FetchNodeDetails(EthereumNetwork network, String proxyAddress) {
         this.proxyAddress = proxyAddress;
-        this.providerUrl = "https://" + network.toString() + ".infura.io/v3/" + "7f287687b3d049e2bea7b64869ee30a3";
+        this.providerUrl = "https://" + network.toString() + ".infura.io/v3/" + "b8cdb0e4cff24599a286bf8e87ff1c96";
         this.setupWeb3();
     }
 
