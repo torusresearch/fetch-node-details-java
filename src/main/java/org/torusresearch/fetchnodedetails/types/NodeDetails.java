@@ -2,6 +2,7 @@ package org.torusresearch.fetchnodedetails.types;
 
 import java.math.BigInteger;
 import java.util.Arrays;
+import java.util.Objects;
 
 public class NodeDetails {
     private String currentEpoch;
@@ -81,5 +82,24 @@ public class NodeDetails {
                 ", torusNodePub=" + Arrays.toString(torusNodePub) +
                 ", updated=" + updated +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof NodeDetails)) return false;
+        NodeDetails that = (NodeDetails) o;
+        return Objects.equals(getCurrentEpoch(), that.getCurrentEpoch()) && Objects.equals(getNodeListAddress(), that.getNodeListAddress())
+                && Arrays.equals(getTorusNodeEndpoints(), that.getTorusNodeEndpoints()) && Arrays.equals(getTorusIndexes(), that.getTorusIndexes()) &&
+                Arrays.equals(getTorusNodePub(), that.getTorusNodePub()) && Objects.equals(getUpdated(), that.getUpdated());
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(getCurrentEpoch(), getNodeListAddress(), getUpdated());
+        result = 31 * result + Arrays.hashCode(getTorusNodeEndpoints());
+        result = 31 * result + Arrays.hashCode(getTorusIndexes());
+        result = 31 * result + Arrays.hashCode(getTorusNodePub());
+        return result;
     }
 }

@@ -5,13 +5,13 @@ public enum EthereumNetwork {
     ROPSTEN("ropsten"),
     POLYGON("polygon-mainnet");
 
-    private String val;
+    private final String val;
 
     EthereumNetwork(String s) {
         this.val = s;
     }
 
     public String toString() {
-          return val;
+        return val;
     }
 }
