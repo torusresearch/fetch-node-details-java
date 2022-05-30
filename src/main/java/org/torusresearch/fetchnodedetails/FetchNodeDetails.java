@@ -1,125 +1,147 @@
 package org.torusresearch.fetchnodedetails;
 
 
-import java8.util.concurrent.CompletableFuture;
-import org.torusresearch.fetchnodedetails.types.*;
+import org.torusresearch.fetchnodedetails.types.EthereumNetwork;
+import org.torusresearch.fetchnodedetails.types.NodeDetails;
+import org.torusresearch.fetchnodedetails.types.NodeInfo;
+import org.torusresearch.fetchnodedetails.types.TorusNodePub;
 import org.web3j.crypto.Credentials;
+import org.web3j.crypto.Hash;
 import org.web3j.protocol.Web3j;
 import org.web3j.protocol.http.HttpService;
-import org.web3j.tuples.generated.Tuple6;
-import org.web3j.tuples.generated.Tuple7;
 import org.web3j.tx.gas.DefaultGasProvider;
 
 import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.List;
+import java.nio.charset.StandardCharsets;
+import java.util.concurrent.CompletableFuture;
 
 public class FetchNodeDetails {
+
+    public static String PROXY_ADDRESS_MAINNET = "0xf20336e16B5182637f09821c27BDe29b0AFcfe80";
+    public static String PROXY_ADDRESS_ROPSTEN = "0x6258c9d6c12ed3edda59a1a6527e469517744aa7";
+    public static String PROXY_ADDRESS_POLYGON = "0x9f072ba19b3370e512aa1b4bfcdaf97283168005";
+
+    public static NodeDetails NODE_DETAILS_MAINNET = new NodeDetails(
+            "19",
+            "0xf20336e16B5182637f09821c27BDe29b0AFcfe80",
+            new String[]{
+                    "https://torus-19.torusnode.com/jrpc",
+                    "https://torus-node.ens.domains/jrpc",
+                    "https://torus-node.matic.network/jrpc",
+                    "https://torus.zilliqa.network/jrpc",
+                    "https://torus-mainnet.cosmos.network/jrpc",
+                    "https://torus2.etherscan.com/jrpc",
+                    "https://torus-node-v2.skalelabs.com/jrpc",
+                    "https://torus-node.binancex.dev/jrpc",
+                    "https://torusnode.ont.io/jrpc"
+            },
+            new BigInteger[]{new BigInteger("1"), new BigInteger("2"), new BigInteger("3"), new BigInteger("4"), new BigInteger("5"), new BigInteger("6"), new BigInteger("7"), new BigInteger("8"), new BigInteger("9"),},
+            new TorusNodePub[]{
+                    new TorusNodePub(
+                            "bbe83c64177c3775550e6ba6ac2bc059f6847d644c9e4894e42c60d7974d8c2b",
+                            "82b49a7caf70def38cdad2740af45c1e4f969650105c5019a29bb18b21a9acb5"
+                    ),
+                    new TorusNodePub(
+                            "c208cac4ef9a47d386097a9c915b28e9cb89213abee8d26a17198ee261201b0d",
+                            "c7db2fe4631109f40833de9dc78d07e35706549ee48fa557b33e4e75e1047873"
+                    ), new TorusNodePub
+                    (
+                            "ca1766bb426d4ca5582818a0c5439d560ea64f5baa060793ab29dd3d0ceacfe",
+                            "d46c1d08c40e1306e1bca328c2287b8268166b11a1ba4b8442ea2ad0c5e32152"
+                    ), new TorusNodePub
+                    (
+                            "c3934dd2f6f4b3d2e1e398cc501e143c1e1a381b52feb6d1525af34d16253768",
+                            "71f5141a5035799099f5ea3e241e66946bc55dc857ac3bd7d6fcdb8dcd3eeeef"
+                    ), new TorusNodePub
+                    (
+                            "22e66f1929631d00bf026227581597f085fd94fd952fc0dca9f0833398b5c064",
+                            "6088b3912e10a1e9d50355a609c10db7d188f16a2e2fd7357e51bf4f6a74f0a1"
+                    ), new TorusNodePub
+                    (
+                            "9dc9fa410f3ce9eb70df70cdea00a49f2c4cc7a31c08c0dab5f863ed35ff5139",
+                            "627a291cb87a75c61da3f65d6818e1e05e360217179817ed27e8c73bca7ec122"
+                    ), new TorusNodePub
+                    (
+                            "118b9fc07e97b096d899b9f6658463ce6a8caa64038e37fc969df4e6023dd8c6",
+                            "baf9fa4e51770f4796ea165dd03a769b8606681a38954a0a92c4cbffd6609ce9"
+                    ), new TorusNodePub
+                    (
+                            "8a6d8b925da15a273dec3d8f8395ec35cd6878f274b2b180e4e106999db64043",
+                            "96f67f870c157743da0b1eb84d89bf30500d74dc84c11f501ee1cb013acc8c46"
+                    ), new TorusNodePub
+                    (
+                            "39cecb62e863729f572f7dfc46c24867981bf04bb405fed0df39e33984bfade5",
+                            "61c2364434012e68a2be2e9952805037e52629d7762fafc8e10e9fb5bad8f790"
+                    )
+            },
+            false);
 
     private final String proxyAddress;
     private final NodeDetails nodeDetails = new NodeDetails();
     private final String providerUrl;
-    private NodeListProxy proxyContract;
+    private TorusLookup torusLookup;
 
     public FetchNodeDetails() {
-        this(EthereumNetwork.MAINNET, "0x638646503746d5456209e33a2ff5e3226d698bea");
+        this(EthereumNetwork.MAINNET, "0xf20336e16B5182637f09821c27BDe29b0AFcfe80");
     }
 
     public FetchNodeDetails(EthereumNetwork network, String proxyAddress) {
         this.proxyAddress = proxyAddress;
-        this.providerUrl = "https://" + network.toString().toLowerCase() + ".infura.io/v3/" + "b8cdb0e4cff24599a286bf8e87ff1c96";
+        this.providerUrl = "https://" + network.toString() + ".infura.io/v3/" + "b8cdb0e4cff24599a286bf8e87ff1c96";
         this.setupWeb3();
     }
 
-    public FetchNodeDetails(String proxyAddress, String providerUrl) {
+    public FetchNodeDetails(String providerUrl, String proxyAddress) {
         this.proxyAddress = proxyAddress;
         this.providerUrl = providerUrl;
         this.setupWeb3();
     }
 
-//    public static void main(String[] args) {
-//        FetchNodeDetails fetchNodeDetails = new FetchNodeDetails();
-//        try {
-//            // var epoch = fetchNodeDetails.getCurrentEpoch().get();
-//            NodeDetails nodeDetails = fetchNodeDetails.getNodeDetails().get();
-//            String[] epoch = nodeDetails.getTorusNodeEndpoints();
-//            TorusNodePub[] items = nodeDetails.getTorusNodePub();
-//            BigInteger[] indexes = nodeDetails.getTorusIndexes();
-//            Arrays.stream(items).forEach(System.out::println);
-//            Arrays.stream(epoch).forEach(System.out::println);
-//            Arrays.stream(indexes).forEach(System.out::println);
-//            System.out.println(nodeDetails);
-//        } catch (Exception e) {
-//            System.out.println(e.toString());
-//        }
-//        System.out.println("Hello world from fetch node details");
-//    }
-
-    public CompletableFuture<BigInteger> getCurrentEpoch() {
-        return this.proxyContract.currentEpoch().sendAsync();
-    }
-
-    public CompletableFuture<EpochInfo> getEpochInfo(BigInteger epoch) {
-        return this.proxyContract.getEpochInfo(epoch).sendAsync()
-                .thenApply(
-                        (Tuple7<BigInteger, BigInteger, BigInteger, BigInteger, List<String>, BigInteger, BigInteger> result) ->
-                                new EpochInfo(result.component1().toString(), result.component2().toString(), result.component3().toString(),
-                                        result.component4().toString(), result.component5().toArray(new String[0]),
-                                        result.component6().toString(), result.component7().toString())
-                );
-    }
-
-    public CompletableFuture<NodeInfo> getNodeEndpoint(String nodeEthAddress) {
-        return this.proxyContract.getNodeDetails(nodeEthAddress).sendAsync().thenApply(
-                (Tuple6<String, BigInteger, BigInteger, BigInteger, String, String> result) ->
-                        new NodeInfo(result.component1(), result.component2().toString(), result.component3().toString(16),
-                                result.component4().toString(16), result.component5(), result.component6())
-        );
-    }
-
-    public CompletableFuture<NodeDetails> getNodeDetails() {
-        if (this.nodeDetails.getUpdated()) return CompletableFuture.supplyAsync(() -> this.nodeDetails);
-        return this.getCurrentEpoch().thenCompose((epoch) -> {
-            this.nodeDetails.setNodeListAddress(this.proxyAddress);
-            this.nodeDetails.setCurrentEpoch(epoch.toString());
-            return this.getEpochInfo(epoch);
-        }).thenCompose((latestEpochInfo) -> {
-            String[] nodeList = latestEpochInfo.getNodeList();
-            BigInteger[] _torusIndexes = new BigInteger[nodeList.length];
-            List<CompletableFuture<NodeInfo>> futures = new ArrayList<>(nodeList.length);
-            for (int i = 0, size = nodeList.length; i < size; i++) {
-                _torusIndexes[i] = new BigInteger(Integer.toString(i + 1));
-                futures.add(this.getNodeEndpoint(nodeList[i]));
-            }
-            this.nodeDetails.setTorusIndexes(_torusIndexes);
-            CompletableFuture<Void> allFutures = CompletableFuture.allOf(futures.toArray(new CompletableFuture[0]));
-            return allFutures.thenApply(v -> {
-                // futures.stream().map(CompletableFuture::join).collect(Collectors.toList()
-                NodeInfo[] nodeInfoArray = new NodeInfo[nodeList.length];
-                for (int i = 0; i < futures.size(); i++) {
-                    nodeInfoArray[i] = futures.get(i).join();
+    public CompletableFuture<NodeDetails> getNodeDetails(String verifier, String verifierId) {
+        // For mainnet & ropsten, verifierId combination doesn't change the network details
+        if (this.nodeDetails.getUpdated() && (this.proxyAddress.equals(PROXY_ADDRESS_MAINNET) || this.proxyAddress.equals(PROXY_ADDRESS_ROPSTEN)))
+            return CompletableFuture.supplyAsync(() -> this.nodeDetails);
+        byte[] hashedVerifierId = Hash.sha3(verifierId.getBytes(StandardCharsets.UTF_8));
+        CompletableFuture<NodeDetails> cf = new CompletableFuture<>();
+        this.torusLookup.getNodeSet(verifier, hashedVerifierId).sendAsync().whenCompleteAsync((nodeEndPoints, err) -> {
+            if (err != null) {
+                if (this.proxyAddress.equals(FetchNodeDetails.PROXY_ADDRESS_MAINNET)) {
+                    cf.complete(FetchNodeDetails.NODE_DETAILS_MAINNET);
+                } else {
+                    cf.completeExceptionally(err);
                 }
-                return nodeInfoArray;
-            });
-        }).thenApply((nodeEndPoints) -> {
-            String[] updatedEndpoints = new String[nodeEndPoints.length];
-            TorusNodePub[] updatedNodePub = new TorusNodePub[nodeEndPoints.length];
-            for (int i = 0, size = nodeEndPoints.length; i < size; i++) {
-                NodeInfo endPointElement = nodeEndPoints[i];
-                String endpoint = "https://" + endPointElement.getDeclaredIp().split(":")[0] + "/jrpc";
-                updatedEndpoints[i] = endpoint;
-                updatedNodePub[i] = new TorusNodePub(endPointElement.getPubKx(), endPointElement.getPubKy());
+                return;
             }
-            this.nodeDetails.setTorusNodeEndpoints(updatedEndpoints);
-            this.nodeDetails.setTorusNodePub(updatedNodePub);
-            this.nodeDetails.setUpdated(true);
-            return this.nodeDetails;
+            try {
+                String[] updatedEndpoints = new String[nodeEndPoints.component3().size()];
+                TorusNodePub[] updatedNodePub = new TorusNodePub[nodeEndPoints.component3().size()];
+
+                for (int i = 0; i < nodeEndPoints.component3().size(); i++) {
+                    NodeInfo endPointElement = new NodeInfo(String.valueOf(nodeEndPoints.component2().get(i)),
+                            new BigInteger(String.valueOf(nodeEndPoints.component3().get(i)), 10).toString(16).replace("0x", ""),
+                            new BigInteger(String.valueOf(nodeEndPoints.component4().get(i)), 10).toString(16).replace("0x", ""));
+
+                    String endpoint = "https://" + endPointElement.getDeclaredIp().split(":")[0] + "/jrpc";
+                    updatedEndpoints[i] = endpoint;
+                    updatedNodePub[i] = new TorusNodePub(endPointElement.getPubKx(), endPointElement.getPubKy());
+                }
+                this.nodeDetails.setNodeListAddress(this.proxyAddress);
+                this.nodeDetails.setCurrentEpoch(nodeEndPoints.component1().toString());
+                this.nodeDetails.setTorusNodeEndpoints(updatedEndpoints);
+                this.nodeDetails.setTorusNodePub(updatedNodePub);
+                this.nodeDetails.setTorusIndexes(nodeEndPoints.component5().toArray(new BigInteger[0]));
+                this.nodeDetails.setUpdated(true);
+                cf.complete(this.nodeDetails);
+            } catch (Exception err2) {
+                cf.completeExceptionally(err2);
+            }
         });
+        return cf;
     }
 
     private void setupWeb3() {
         Web3j web3j = Web3j.build(new HttpService(this.providerUrl));
         Credentials credentials = Credentials.create("0x5bbbef76458bf30511c9ee6ed56783644eb339258d02656755c68098c4809130");
-        this.proxyContract = new NodeListProxy(this.proxyAddress, web3j, credentials, new DefaultGasProvider());
+        this.torusLookup = new TorusLookup(this.proxyAddress, web3j, credentials, new DefaultGasProvider());
     }
 }
