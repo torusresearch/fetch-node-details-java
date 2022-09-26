@@ -31,7 +31,7 @@ repositories {
         maven { url "https://jitpack.io" }
    }
    dependencies {
-         implementation 'org.torusresearch:fetch-node-details-java:v1.0.0'
+         implementation 'org.torusresearch:fetch-node-details-java:3.0.0'
    }
 ```
 
