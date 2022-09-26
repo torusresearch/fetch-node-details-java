@@ -9,15 +9,18 @@ import java.io.Reader;
 
 public class Config {
     public static NodeDetails MAINNET;
-    public static NodeDetails ROPSTEN;
-    public static NodeDetails POLYGON;
+    public static NodeDetails TESTNET;
+    public static NodeDetails CYAN;
+
+    public static NodeDetails AQUA;
 
     static {
         try {
             String basePath = "src/test/java/org/torusresearch/fetchnodedetailstest/config/";
             MAINNET = getNodeDetailsFromFile(basePath + "mainnet.json");
-            ROPSTEN = getNodeDetailsFromFile(basePath + "ropsten.json");
-            POLYGON = getNodeDetailsFromFile(basePath + "polygon.json");
+            TESTNET = getNodeDetailsFromFile(basePath + "testnet.json");
+            CYAN = getNodeDetailsFromFile(basePath + "cyan.json");
+            AQUA = getNodeDetailsFromFile(basePath + "aqua.json");
         } catch (Exception ex) {
             ex.printStackTrace();
         }
