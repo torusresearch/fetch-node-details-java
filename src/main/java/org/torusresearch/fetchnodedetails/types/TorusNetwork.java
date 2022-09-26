@@ -1,13 +1,15 @@
 package org.torusresearch.fetchnodedetails.types;
 
-public enum EthereumNetwork {
+public enum TorusNetwork {
     MAINNET("mainnet"),
-    ROPSTEN("ropsten"),
-    POLYGON("polygon-mainnet");
+    TESTNET("testnet"),
+    CYAN("cyan"),
+    AQUA("aqua");
+
 
     private final String val;
 
-    EthereumNetwork(String s) {
+    TorusNetwork(String s) {
         this.val = s;
     }
 

@@ -3,7 +3,7 @@ package org.torusresearch.fetchnodedetailstest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.torusresearch.fetchnodedetails.FetchNodeDetails;
-import org.torusresearch.fetchnodedetails.types.EthereumNetwork;
+import org.torusresearch.fetchnodedetails.types.TorusNetwork;
 import org.torusresearch.fetchnodedetails.types.NodeDetails;
 import org.torusresearch.fetchnodedetailstest.config.Config;
 
@@ -23,20 +23,28 @@ class FetchNodeDetailsTest {
         assertEquals(Config.MAINNET, nodeDetails);
     }
 
-    @DisplayName("Gets the Node details for Ropsten")
+    @DisplayName("Gets the Node details for Testnet")
     @Test
     public void shouldGetNodeDetailsRopsten() throws ExecutionException, InterruptedException, UnsupportedEncodingException {
-        fetchNodeDetails = new FetchNodeDetails(EthereumNetwork.ROPSTEN, FetchNodeDetails.PROXY_ADDRESS_ROPSTEN);
+        fetchNodeDetails = new FetchNodeDetails(TorusNetwork.TESTNET, FetchNodeDetails.PROXY_ADDRESS_TESTNET);
         NodeDetails nodeDetails = this.fetchNodeDetails.getNodeDetails("google", "hello@tor.us").get();
-        assertEquals(Config.ROPSTEN, nodeDetails);
+        assertEquals(Config.TESTNET, nodeDetails);
     }
 
-    @DisplayName("Gets the Node details for Polygon")
+    @DisplayName("Gets the Node details for Cyan")
     @Test
-    public void shouldGetNodeDetailsPolygon() throws ExecutionException, InterruptedException, UnsupportedEncodingException {
-        fetchNodeDetails = new FetchNodeDetails(EthereumNetwork.POLYGON, FetchNodeDetails.PROXY_ADDRESS_POLYGON);
+    public void shouldGetNodeDetailsCyan() throws ExecutionException, InterruptedException, UnsupportedEncodingException {
+        fetchNodeDetails = new FetchNodeDetails(TorusNetwork.CYAN, FetchNodeDetails.PROXY_ADDRESS_CYAN);
         NodeDetails nodeDetails = this.fetchNodeDetails.getNodeDetails("google", "hello@tor.us").get();
-        assertEquals(Config.POLYGON, nodeDetails);
+        assertEquals(Config.CYAN, nodeDetails);
+    }
+
+    @DisplayName("Gets the Node details for Aqua")
+    @Test
+    public void shouldGetNodeDetailsAqua() throws ExecutionException, InterruptedException, UnsupportedEncodingException {
+        fetchNodeDetails = new FetchNodeDetails(TorusNetwork.AQUA, FetchNodeDetails.PROXY_ADDRESS_AQUA);
+        NodeDetails nodeDetails = this.fetchNodeDetails.getNodeDetails("glipandroid", "hello@tor.us").get();
+        assertEquals(Config.AQUA, nodeDetails);
     }
 
 }
