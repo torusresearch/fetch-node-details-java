@@ -13,6 +13,7 @@ public class Config {
     public static NodeDetails CYAN;
 
     public static NodeDetails AQUA;
+    public static NodeDetails CELESTE;
 
     static {
         try {
@@ -21,6 +22,7 @@ public class Config {
             TESTNET = getNodeDetailsFromFile(basePath + "testnet.json");
             CYAN = getNodeDetailsFromFile(basePath + "cyan.json");
             AQUA = getNodeDetailsFromFile(basePath + "aqua.json");
+            CELESTE = getNodeDetailsFromFile(basePath + "celeste.json");
         } catch (Exception ex) {
             ex.printStackTrace();
         }

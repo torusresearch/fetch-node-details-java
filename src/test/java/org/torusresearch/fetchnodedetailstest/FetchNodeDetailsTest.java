@@ -43,8 +43,15 @@ class FetchNodeDetailsTest {
     @Test
     public void shouldGetNodeDetailsAqua() throws ExecutionException, InterruptedException, UnsupportedEncodingException {
         fetchNodeDetails = new FetchNodeDetails(TorusNetwork.AQUA, FetchNodeDetails.PROXY_ADDRESS_AQUA);
-        NodeDetails nodeDetails = this.fetchNodeDetails.getNodeDetails("glipandroid", "hello@tor.us").get();
+        NodeDetails nodeDetails = this.fetchNodeDetails.getNodeDetails("google", "hello@tor.us").get();
         assertEquals(Config.AQUA, nodeDetails);
     }
 
+    @DisplayName("Gets the Node details for Celeste")
+    @Test
+    public void shouldGetNodeDetailsCeleste() throws ExecutionException, InterruptedException {
+        fetchNodeDetails = new FetchNodeDetails(TorusNetwork.CELESTE, FetchNodeDetails.PROXY_ADDRESS_CELESTE);
+        NodeDetails nodeDetails = this.fetchNodeDetails.getNodeDetails("google", "hello@tor.us").get();
+        assertEquals(Config.CELESTE, nodeDetails);
+    }
 }
