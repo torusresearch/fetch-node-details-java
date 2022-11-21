@@ -1,6 +1,6 @@
 {
   "currentEpoch": "15",
-  "nodeListAddress": "0x6258c9d6c12ed3edda59a1a6527e469517744aa7",
+  "nodeListAddress": "0xd084604e5FA387FbC2Da8bAab07fDD6aDED4614A",
   "torusNodeEndpoints": [
     "https://teal-15-1.torusnode.com/jrpc",
     "https://teal-15-3.torusnode.com/jrpc",

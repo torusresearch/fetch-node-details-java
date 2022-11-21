@@ -4,7 +4,8 @@ public enum TorusNetwork {
     MAINNET("mainnet"),
     TESTNET("testnet"),
     CYAN("cyan"),
-    AQUA("aqua");
+    AQUA("aqua"),
+    CELESTE("celeste");
 
 
     private final String val;
