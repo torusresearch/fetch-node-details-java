@@ -1,16 +1,16 @@
 package org.torusresearch.fetchnodedetailstest;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.torusresearch.fetchnodedetails.FetchNodeDetails;
-import org.torusresearch.fetchnodedetails.types.TorusNetwork;
 import org.torusresearch.fetchnodedetails.types.NodeDetails;
+import org.torusresearch.fetchnodedetails.types.TorusNetwork;
 import org.torusresearch.fetchnodedetailstest.config.Config;
 
 import java.io.UnsupportedEncodingException;
 import java.util.concurrent.ExecutionException;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class FetchNodeDetailsTest {
     FetchNodeDetails fetchNodeDetails;
@@ -53,5 +53,29 @@ class FetchNodeDetailsTest {
         fetchNodeDetails = new FetchNodeDetails(TorusNetwork.CELESTE, FetchNodeDetails.PROXY_ADDRESS_CELESTE);
         NodeDetails nodeDetails = this.fetchNodeDetails.getNodeDetails("google", "hello@tor.us").get();
         assertEquals(Config.CELESTE, nodeDetails);
+    }
+
+    @DisplayName("Gets the Node details for SapphireDevnet")
+    @Test
+    public void shouldGetNodeDetailsSapphireDevnet() throws ExecutionException, InterruptedException {
+        fetchNodeDetails = new FetchNodeDetails(TorusNetwork.SAPPHIRE_DEVNET, FetchNodeDetails.PROXY_ADDRESS_CELESTE);
+        NodeDetails nodeDetails = this.fetchNodeDetails.getNodeDetails("google", "hello@tor.us").get();
+        assertEquals(Config.SAPPHIRE_DEVNET, nodeDetails);
+    }
+
+    @DisplayName("Gets the Node details for SapphireTestnet")
+    @Test
+    public void shouldGetNodeDetailsSapphireTestnet() throws ExecutionException, InterruptedException {
+        fetchNodeDetails = new FetchNodeDetails(TorusNetwork.SAPPHIRE_TESTNET, FetchNodeDetails.PROXY_ADDRESS_CELESTE);
+        NodeDetails nodeDetails = this.fetchNodeDetails.getNodeDetails("google", "hello@tor.us").get();
+        assertEquals(Config.SAPPHIRE_TESTNET, nodeDetails);
+    }
+
+    @DisplayName("Gets the Node details for SapphireMainnet")
+    @Test
+    public void shouldGetNodeDetailsSapphireMainnet() throws ExecutionException, InterruptedException {
+        fetchNodeDetails = new FetchNodeDetails(TorusNetwork.SAPPHIRE_MAINNET, FetchNodeDetails.PROXY_ADDRESS_CELESTE);
+        NodeDetails nodeDetails = this.fetchNodeDetails.getNodeDetails("google", "hello@tor.us").get();
+        assertEquals(Config.SAPPHIRE_MAINNET, nodeDetails);
     }
 }

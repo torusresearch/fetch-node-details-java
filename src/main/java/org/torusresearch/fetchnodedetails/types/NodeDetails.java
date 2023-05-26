@@ -1,10 +1,11 @@
 package org.torusresearch.fetchnodedetails.types;
 
+import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class NodeDetails {
+public class NodeDetails implements Serializable {
     private String currentEpoch;
     private String[] torusNodeEndpoints;
     private String[] torusNodeSSSEndpoints;
