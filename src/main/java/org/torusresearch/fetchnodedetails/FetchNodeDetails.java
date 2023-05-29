@@ -11,7 +11,9 @@ import org.torusresearch.fetchnodedetails.types.TorusNodePub;
 import org.torusresearch.fetchnodedetails.types.Utils;
 
 import java.math.BigInteger;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public class FetchNodeDetails {
@@ -32,6 +34,8 @@ public class FetchNodeDetails {
         }
     };
 
+    private List<String> multi_cluster_networks = Arrays.asList("AQUA", "CELESTE", "CYAN");
+
     private final NodeDetails nodeDetails = new NodeDetails();
     private TorusNetwork torusNetwork = TorusNetwork.MAINNET;
 
@@ -45,9 +49,7 @@ public class FetchNodeDetails {
 
     public CompletableFuture<NodeDetails> getNodeDetails(String verifier, String verifierId) {
         // For mainnet & ropsten, verifierId combination doesn't change the network details
-        if (this.nodeDetails.getUpdated() && (this.torusNetwork.equals(TorusNetwork.MAINNET) || this.torusNetwork.equals(TorusNetwork.TESTNET)
-                || this.torusNetwork.equals(TorusNetwork.SAPPHIRE_MAINNET) || this.torusNetwork.equals(TorusNetwork.SAPPHIRE_TESTNET) ||
-                this.torusNetwork.equals(TorusNetwork.SAPPHIRE_DEVNET)))
+        if (this.nodeDetails.getUpdated() && !(multi_cluster_networks.contains(this.torusNetwork.name())))
             return CompletableFuture.supplyAsync(() -> this.nodeDetails);
 
         CompletableFuture<NodeDetails> cf = new CompletableFuture<>();
