@@ -63,14 +63,13 @@ class FetchNodeDetailsTest {
         assertEquals(Config.SAPPHIRE_DEVNET, nodeDetails);
     }
 
-    @DisplayName("Gets the Node details for SapphireTestnet")
-    @Test
+
     // TODO: Currently sapphire testnet is down
-    public void shouldGetNodeDetailsSapphireTestnet() throws ExecutionException, InterruptedException {
+    /*public void shouldGetNodeDetailsSapphireTestnet() throws ExecutionException, InterruptedException {
         fetchNodeDetails = new FetchNodeDetails(TorusNetwork.SAPPHIRE_TESTNET);
         NodeDetails nodeDetails = this.fetchNodeDetails.getNodeDetails("google", "hello@tor.us").get();
         assertEquals(Config.SAPPHIRE_TESTNET, nodeDetails);
-    }
+    }*/
 
     @DisplayName("Gets the Node details for SapphireMainnet")
     @Test

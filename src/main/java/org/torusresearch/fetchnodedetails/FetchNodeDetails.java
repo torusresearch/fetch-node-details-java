@@ -34,7 +34,7 @@ public class FetchNodeDetails {
         }
     };
 
-    private List<String> multi_cluster_networks = Arrays.asList("AQUA", "CELESTE", "CYAN");
+    private List<String> multi_cluster_networks = Arrays.asList("aqua", "celeste", "cyan");
 
     private final NodeDetails nodeDetails = new NodeDetails();
     private TorusNetwork torusNetwork = TorusNetwork.MAINNET;
