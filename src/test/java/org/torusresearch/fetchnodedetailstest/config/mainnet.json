@@ -12,6 +12,9 @@
     "https://torus-node.binancex.dev/jrpc",
     "https://torusnode.ont.io/jrpc"
   ],
+  "torusNodeSSSEndpoints": null,
+  "torusNodeRSSEndpoints": null,
+  "torusNodeTSSEndpoints": null,
   "torusNodePub": [
     {
       "X": "bbe83c64177c3775550e6ba6ac2bc059f6847d644c9e4894e42c60d7974d8c2b",
@@ -51,5 +54,5 @@
     }
   ],
   "torusIndexes": [1, 2, 3, 4, 5, 6, 7, 8, 9],
-  "updated": true
+  "updated": false
 }

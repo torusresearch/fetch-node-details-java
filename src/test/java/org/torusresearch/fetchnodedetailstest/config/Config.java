@@ -1,9 +1,9 @@
 package org.torusresearch.fetchnodedetailstest.config;
 
 import com.google.gson.Gson;
+
 import org.torusresearch.fetchnodedetails.types.NodeDetails;
 
-import java.io.File;
 import java.io.FileReader;
 import java.io.Reader;
 
@@ -14,6 +14,9 @@ public class Config {
 
     public static NodeDetails AQUA;
     public static NodeDetails CELESTE;
+    public static NodeDetails SAPPHIRE_DEVNET;
+    public static NodeDetails SAPPHIRE_TESTNET;
+    public static NodeDetails SAPPHIRE_MAINNET;
 
     static {
         try {
@@ -23,6 +26,9 @@ public class Config {
             CYAN = getNodeDetailsFromFile(basePath + "cyan.json");
             AQUA = getNodeDetailsFromFile(basePath + "aqua.json");
             CELESTE = getNodeDetailsFromFile(basePath + "celeste.json");
+            SAPPHIRE_DEVNET = getNodeDetailsFromFile(basePath + "sapphire_devnet.json");
+            SAPPHIRE_TESTNET = getNodeDetailsFromFile(basePath + "sapphire_testnet.json");
+            SAPPHIRE_MAINNET = getNodeDetailsFromFile(basePath + "sapphire_mainnet.json");
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -35,7 +41,7 @@ public class Config {
             Gson gson = new Gson();
 
             // create a reader
-            Reader reader = new FileReader(new File(path));
+            Reader reader = new FileReader(path);
 
             // convert JSON file to map
             NodeDetails details = gson.fromJson(reader, NodeDetails.class);
