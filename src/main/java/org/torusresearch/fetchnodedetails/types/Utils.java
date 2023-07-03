@@ -63,9 +63,9 @@ public class Utils {
                 nodeDetails = NODE_DETAILS_SAPPHIRE_TESTNET;
             case SAPPHIRE_MAINNET:
                 nodeDetails = NODE_DETAILS_SAPPHIRE_MAINNET;
-            case LEGACY_MAINNET:
+            case MAINNET:
                 nodeDetails = NODE_DETAILS_MAINNET;
-            case LEGACY_TESTNET:
+            case TESTNET:
                 nodeDetails = NODE_DETAILS_TESTNET;
         }
         return nodeDetails;

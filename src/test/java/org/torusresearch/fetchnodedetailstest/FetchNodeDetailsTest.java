@@ -25,7 +25,7 @@ class FetchNodeDetailsTest {
     @DisplayName("Gets the Node details for Testnet")
     @Test
     public void shouldGetNodeDetailsRopsten() throws ExecutionException, InterruptedException {
-        fetchNodeDetails = new FetchNodeDetails(TorusNetwork.LEGACY_TESTNET);
+        fetchNodeDetails = new FetchNodeDetails(TorusNetwork.TESTNET);
         NodeDetails nodeDetails = this.fetchNodeDetails.getNodeDetails("google", "hello@tor.us").get();
         assertEquals(Config.TESTNET, nodeDetails);
     }
@@ -33,7 +33,7 @@ class FetchNodeDetailsTest {
     @DisplayName("Gets the Node details for Cyan")
     @Test
     public void shouldGetNodeDetailsCyan() throws ExecutionException, InterruptedException {
-        fetchNodeDetails = new FetchNodeDetails(TorusNetwork.LEGACY_CYAN);
+        fetchNodeDetails = new FetchNodeDetails(TorusNetwork.CYAN);
         NodeDetails nodeDetails = this.fetchNodeDetails.getNodeDetails("google", "hello@tor.us").get();
         assertEquals(Config.CYAN, nodeDetails);
     }
@@ -41,7 +41,7 @@ class FetchNodeDetailsTest {
     @DisplayName("Gets the Node details for Aqua")
     @Test
     public void shouldGetNodeDetailsAqua() throws ExecutionException, InterruptedException {
-        fetchNodeDetails = new FetchNodeDetails(TorusNetwork.LEGACY_AQUA);
+        fetchNodeDetails = new FetchNodeDetails(TorusNetwork.AQUA);
         NodeDetails nodeDetails = this.fetchNodeDetails.getNodeDetails("google", "hello@tor.us").get();
         assertEquals(Config.AQUA, nodeDetails);
     }
@@ -49,7 +49,7 @@ class FetchNodeDetailsTest {
     @DisplayName("Gets the Node details for Celeste")
     @Test
     public void shouldGetNodeDetailsCeleste() throws ExecutionException, InterruptedException {
-        fetchNodeDetails = new FetchNodeDetails(TorusNetwork.LEGACY_CELESTE);
+        fetchNodeDetails = new FetchNodeDetails(TorusNetwork.CELESTE);
         NodeDetails nodeDetails = this.fetchNodeDetails.getNodeDetails("google", "hello@tor.us").get();
         assertEquals(Config.CELESTE, nodeDetails);
     }
