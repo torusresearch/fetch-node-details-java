@@ -1,15 +1,14 @@
 package org.torusresearch.fetchnodedetails.types;
 
 public enum TorusNetwork {
-    MAINNET("mainnet"),
-    TESTNET("testnet"),
-    CYAN("cyan"),
-    AQUA("aqua"),
-    CELESTE("celeste"),
+    LEGACY_MAINNET("mainnet"),
+    LEGACY_TESTNET("testnet"),
+    LEGACY_CYAN("cyan"),
+    LEGACY_AQUA("aqua"),
+    LEGACY_CELESTE("celeste"),
     SAPPHIRE_DEVNET("sapphire_devnet"),
     SAPPHIRE_TESTNET("sapphire_devnet"),
     SAPPHIRE_MAINNET("sapphire_mainnet");
-
 
     private final String val;
 
