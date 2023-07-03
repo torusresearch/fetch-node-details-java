@@ -1,11 +1,11 @@
 {
   "currentEpoch": "1",
   "torusNodeEndpoints": [
-    "https://sapphire-dev-2-1.authnetwork.dev",
-    "https://sapphire-dev-2-2.authnetwork.dev",
-    "https://sapphire-dev-2-3.authnetwork.dev",
-    "https://sapphire-dev-2-4.authnetwork.dev",
-    "https://sapphire-dev-2-5.authnetwork.dev"
+    "https://sapphire-dev-2-1.authnetwork.dev/sss/jrpc",
+    "https://sapphire-dev-2-2.authnetwork.dev/sss/jrpc",
+    "https://sapphire-dev-2-3.authnetwork.dev/sss/jrpc",
+    "https://sapphire-dev-2-4.authnetwork.dev/sss/jrpc",
+    "https://sapphire-dev-2-5.authnetwork.dev/sss/jrpc"
   ],
   "torusNodeSSSEndpoints": [
     "https://sapphire-dev-2-1.authnetwork.dev/sss/jrpc",

@@ -9,7 +9,6 @@ import org.torusresearch.fetchnodedetails.types.NodeDetails;
 import org.torusresearch.fetchnodedetails.types.TorusNetwork;
 import org.torusresearch.fetchnodedetailstest.config.Config;
 
-import java.io.UnsupportedEncodingException;
 import java.util.concurrent.ExecutionException;
 
 class FetchNodeDetailsTest {
@@ -17,7 +16,7 @@ class FetchNodeDetailsTest {
 
     @DisplayName("Gets the Node details for Mainnet")
     @Test
-    public void shouldGetNodeDetailsMainnet() throws ExecutionException, InterruptedException, UnsupportedEncodingException {
+    public void shouldGetNodeDetailsMainnet() throws ExecutionException, InterruptedException {
         fetchNodeDetails = new FetchNodeDetails();
         NodeDetails nodeDetails = this.fetchNodeDetails.getNodeDetails("google", "hello@tor.us").get();
         assertEquals(Config.MAINNET, nodeDetails);
@@ -25,24 +24,24 @@ class FetchNodeDetailsTest {
 
     @DisplayName("Gets the Node details for Testnet")
     @Test
-    public void shouldGetNodeDetailsRopsten() throws ExecutionException, InterruptedException, UnsupportedEncodingException {
-        fetchNodeDetails = new FetchNodeDetails(TorusNetwork.TESTNET);
+    public void shouldGetNodeDetailsRopsten() throws ExecutionException, InterruptedException {
+        fetchNodeDetails = new FetchNodeDetails(TorusNetwork.LEGACY_TESTNET);
         NodeDetails nodeDetails = this.fetchNodeDetails.getNodeDetails("google", "hello@tor.us").get();
         assertEquals(Config.TESTNET, nodeDetails);
     }
 
     @DisplayName("Gets the Node details for Cyan")
     @Test
-    public void shouldGetNodeDetailsCyan() throws ExecutionException, InterruptedException, UnsupportedEncodingException {
-        fetchNodeDetails = new FetchNodeDetails(TorusNetwork.CYAN);
+    public void shouldGetNodeDetailsCyan() throws ExecutionException, InterruptedException {
+        fetchNodeDetails = new FetchNodeDetails(TorusNetwork.LEGACY_CYAN);
         NodeDetails nodeDetails = this.fetchNodeDetails.getNodeDetails("google", "hello@tor.us").get();
         assertEquals(Config.CYAN, nodeDetails);
     }
 
     @DisplayName("Gets the Node details for Aqua")
     @Test
-    public void shouldGetNodeDetailsAqua() throws ExecutionException, InterruptedException, UnsupportedEncodingException {
-        fetchNodeDetails = new FetchNodeDetails(TorusNetwork.AQUA);
+    public void shouldGetNodeDetailsAqua() throws ExecutionException, InterruptedException {
+        fetchNodeDetails = new FetchNodeDetails(TorusNetwork.LEGACY_AQUA);
         NodeDetails nodeDetails = this.fetchNodeDetails.getNodeDetails("google", "hello@tor.us").get();
         assertEquals(Config.AQUA, nodeDetails);
     }
@@ -50,7 +49,7 @@ class FetchNodeDetailsTest {
     @DisplayName("Gets the Node details for Celeste")
     @Test
     public void shouldGetNodeDetailsCeleste() throws ExecutionException, InterruptedException {
-        fetchNodeDetails = new FetchNodeDetails(TorusNetwork.CELESTE);
+        fetchNodeDetails = new FetchNodeDetails(TorusNetwork.LEGACY_CELESTE);
         NodeDetails nodeDetails = this.fetchNodeDetails.getNodeDetails("google", "hello@tor.us").get();
         assertEquals(Config.CELESTE, nodeDetails);
     }
@@ -63,13 +62,13 @@ class FetchNodeDetailsTest {
         assertEquals(Config.SAPPHIRE_DEVNET, nodeDetails);
     }
 
-
-    // TODO: Currently sapphire testnet is down
-    /*public void shouldGetNodeDetailsSapphireTestnet() throws ExecutionException, InterruptedException {
+    @DisplayName("Gets the Node details for SapphireTestnet")
+    @Test
+    public void shouldGetNodeDetailsSapphireTestnet() throws ExecutionException, InterruptedException {
         fetchNodeDetails = new FetchNodeDetails(TorusNetwork.SAPPHIRE_TESTNET);
         NodeDetails nodeDetails = this.fetchNodeDetails.getNodeDetails("google", "hello@tor.us").get();
         assertEquals(Config.SAPPHIRE_TESTNET, nodeDetails);
-    }*/
+    }
 
     @DisplayName("Gets the Node details for SapphireMainnet")
     @Test
