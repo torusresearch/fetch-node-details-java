@@ -7,11 +7,18 @@ import org.torusresearch.fetchnodedetails.types.APIUtils;
 import org.torusresearch.fetchnodedetails.types.FNDResponse;
 import org.torusresearch.fetchnodedetails.types.LegacyNetworkMigrationInfo;
 import org.torusresearch.fetchnodedetails.types.NodeDetails;
+import org.torusresearch.fetchnodedetails.types.NodeInfo;
 import org.torusresearch.fetchnodedetails.types.TorusNetwork;
 import org.torusresearch.fetchnodedetails.types.TorusNodePub;
 import org.torusresearch.fetchnodedetails.types.Utils;
+import org.web3j.crypto.Credentials;
+import org.web3j.crypto.Hash;
+import org.web3j.protocol.Web3j;
+import org.web3j.protocol.http.HttpService;
+import org.web3j.tx.gas.DefaultGasProvider;
 
 import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -53,6 +60,9 @@ public class FetchNodeDetails {
 
     private List<String> multi_cluster_networks = Arrays.asList("aqua", "celeste", "cyan");
 
+    private String proxyAddress;
+    private String providerUrl;
+    private TorusLookup torusLookup;
     private final NodeDetails nodeDetails = new NodeDetails();
     private TorusNetwork torusNetwork = TorusNetwork.MAINNET;
 
@@ -60,8 +70,60 @@ public class FetchNodeDetails {
         this(TorusNetwork.MAINNET);
     }
 
+    public FetchNodeDetails(TorusNetwork network, String proxyAddress) {
+        this.proxyAddress = proxyAddress;
+        this.torusNetwork = network;
+        this.providerUrl = "https://" + NETWORK_MAP.get(network) + ".infura.io/v3/" + "b8cdb0e4cff24599a286bf8e87ff1c96";
+        this.setupWeb3();
+    }
+
+    public FetchNodeDetails(String providerUrl, String proxyAddress) {
+        this.proxyAddress = proxyAddress;
+        this.providerUrl = providerUrl;
+        this.setupWeb3();
+    }
+
     public FetchNodeDetails(TorusNetwork network) {
         this.torusNetwork = network;
+    }
+
+    public CompletableFuture<NodeDetails> getLegacyNodeDetails(String verifier, String verifierId) {
+        // For mainnet & ropsten, verifierId combination doesn't change the network details
+        if (this.nodeDetails.getUpdated() && (this.proxyAddress.equals(PROXY_ADDRESS_MAINNET) || this.proxyAddress.equals(PROXY_ADDRESS_TESTNET)))
+            return CompletableFuture.supplyAsync(() -> this.nodeDetails);
+        byte[] hashedVerifierId = Hash.sha3(verifierId.getBytes(StandardCharsets.UTF_8));
+        CompletableFuture<NodeDetails> cf = new CompletableFuture<>();
+        this.torusLookup.getNodeSet(verifier, hashedVerifierId).sendAsync().whenCompleteAsync((nodeEndPoints, err) -> {
+            if (err != null) {
+                if (this.proxyAddress.equals(FetchNodeDetails.PROXY_ADDRESS_MAINNET)) {
+                    cf.complete(FetchNodeDetails.NODE_DETAILS_MAINNET);
+                } else {
+                    cf.completeExceptionally(err);
+                }
+                return;
+            }
+            try {
+                String[] updatedEndpoints = new String[nodeEndPoints.component3().size()];
+                TorusNodePub[] updatedNodePub = new TorusNodePub[nodeEndPoints.component3().size()];
+
+                for (int i = 0; i < nodeEndPoints.component3().size(); i++) {
+                    NodeInfo endPointElement = new NodeInfo(String.valueOf(nodeEndPoints.component2().get(i)), new BigInteger(String.valueOf(nodeEndPoints.component3().get(i)), 10).toString(16).replace("0x", ""), new BigInteger(String.valueOf(nodeEndPoints.component4().get(i)), 10).toString(16).replace("0x", ""));
+
+                    String endpoint = "https://" + endPointElement.getDeclaredIp().split(":")[0] + "/jrpc";
+                    updatedEndpoints[i] = endpoint;
+                    updatedNodePub[i] = new TorusNodePub(endPointElement.getPubKx(), endPointElement.getPubKy());
+                }
+                this.nodeDetails.setCurrentEpoch(nodeEndPoints.component1().toString());
+                this.nodeDetails.setTorusNodeEndpoints(updatedEndpoints);
+                this.nodeDetails.setTorusNodePub(updatedNodePub);
+                this.nodeDetails.setTorusIndexes(nodeEndPoints.component5().toArray(new BigInteger[0]));
+                this.nodeDetails.setUpdated(true);
+                cf.complete(this.nodeDetails);
+            } catch (Exception err2) {
+                cf.completeExceptionally(err2);
+            }
+        });
+        return cf;
     }
 
     public CompletableFuture<NodeDetails> getNodeDetails(String verifier, String verifierId) {
@@ -85,5 +147,11 @@ public class FetchNodeDetails {
         NodeDetails nodeDetails = Utils.fetchLocalConfig(this.torusNetwork);
         cf.complete(nodeDetails);
         return cf;
+    }
+
+    private void setupWeb3() {
+        Web3j web3j = Web3j.build(new HttpService(this.providerUrl));
+        Credentials credentials = Credentials.create("0x5bbbef76458bf30511c9ee6ed56783644eb339258d02656755c68098c4809130");
+        this.torusLookup = new TorusLookup(this.proxyAddress, web3j, credentials, new DefaultGasProvider());
     }
 }
