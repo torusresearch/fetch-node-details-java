@@ -48,13 +48,13 @@ public class FetchNodeDetails {
         }
     };
 
-    public static HashMap<TorusNetwork, LegacyNetworkMigrationInfo> NETWORKS_ROUTE_MAP = new HashMap<TorusNetwork, LegacyNetworkMigrationInfo>() {
+    public static HashMap<String, LegacyNetworkMigrationInfo> NETWORKS_ROUTE_MAP = new HashMap<String, LegacyNetworkMigrationInfo>() {
         {
-            put(TorusNetwork.AQUA, new LegacyNetworkMigrationInfo(false, "aqua", TorusNetwork.SAPPHIRE_MAINNET));
-            put(TorusNetwork.CELESTE, new LegacyNetworkMigrationInfo(false, "celeste", TorusNetwork.SAPPHIRE_MAINNET));
-            put(TorusNetwork.CYAN, new LegacyNetworkMigrationInfo(false, "cyan", TorusNetwork.SAPPHIRE_MAINNET));
-            put(TorusNetwork.MAINNET, new LegacyNetworkMigrationInfo(false, "mainnet", TorusNetwork.SAPPHIRE_MAINNET));
-            put(TorusNetwork.TESTNET, new LegacyNetworkMigrationInfo(true, "teal", TorusNetwork.SAPPHIRE_TESTNET));
+            put(TorusNetwork.AQUA.toString(), new LegacyNetworkMigrationInfo(false, "aqua", TorusNetwork.SAPPHIRE_MAINNET));
+            put(TorusNetwork.CELESTE.toString(), new LegacyNetworkMigrationInfo(false, "celeste", TorusNetwork.SAPPHIRE_MAINNET));
+            put(TorusNetwork.CYAN.toString(), new LegacyNetworkMigrationInfo(false, "cyan", TorusNetwork.SAPPHIRE_MAINNET));
+            put(TorusNetwork.MAINNET.toString(), new LegacyNetworkMigrationInfo(false, "mainnet", TorusNetwork.SAPPHIRE_MAINNET));
+            put(TorusNetwork.TESTNET.toString(), new LegacyNetworkMigrationInfo(true, "teal", TorusNetwork.SAPPHIRE_TESTNET));
         }
     };
 
