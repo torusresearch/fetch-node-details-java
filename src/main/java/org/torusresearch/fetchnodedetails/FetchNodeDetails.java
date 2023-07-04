@@ -48,7 +48,7 @@ public class FetchNodeDetails {
         }
     };
 
-    public static HashMap<String, LegacyNetworkMigrationInfo> NETWORKS_ROUTE_MAP = new HashMap<String, LegacyNetworkMigrationInfo>() {
+    public static HashMap<String, LegacyNetworkMigrationInfo> LEGACY_NETWORKS_ROUTE_MAP = new HashMap<String, LegacyNetworkMigrationInfo>() {
         {
             put(TorusNetwork.AQUA.toString(), new LegacyNetworkMigrationInfo(false, "aqua", TorusNetwork.SAPPHIRE_MAINNET));
             put(TorusNetwork.CELESTE.toString(), new LegacyNetworkMigrationInfo(false, "celeste", TorusNetwork.SAPPHIRE_MAINNET));
