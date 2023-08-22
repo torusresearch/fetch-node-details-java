@@ -59,8 +59,6 @@ public class Utils {
         switch (network) {
             case SAPPHIRE_DEVNET:
                 nodeDetails = NODE_DETAILS_SAPPHIRE_DEVNET;
-            case SAPPHIRE_TESTNET:
-                nodeDetails = NODE_DETAILS_SAPPHIRE_TESTNET;
             case SAPPHIRE_MAINNET:
                 nodeDetails = NODE_DETAILS_SAPPHIRE_MAINNET;
             case MAINNET:
