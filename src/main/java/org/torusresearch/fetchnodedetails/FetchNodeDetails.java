@@ -52,7 +52,7 @@ public class FetchNodeDetails {
             put(TorusNetwork.AQUA.toString(), new LegacyNetworkMigrationInfo(false, "aqua", TorusNetwork.SAPPHIRE_MAINNET));
             put(TorusNetwork.CELESTE.toString(), new LegacyNetworkMigrationInfo(false, "celeste", TorusNetwork.SAPPHIRE_MAINNET));
             put(TorusNetwork.CYAN.toString(), new LegacyNetworkMigrationInfo(false, "cyan", TorusNetwork.SAPPHIRE_MAINNET));
-            put(TorusNetwork.MAINNET.toString(), new LegacyNetworkMigrationInfo(false, "mainnet", TorusNetwork.SAPPHIRE_MAINNET));
+            put(TorusNetwork.MAINNET.toString(), new LegacyNetworkMigrationInfo(true, "mainnet", TorusNetwork.SAPPHIRE_MAINNET));
             put(TorusNetwork.TESTNET.toString(), new LegacyNetworkMigrationInfo(true, "teal", TorusNetwork.SAPPHIRE_DEVNET));
         }
     };
