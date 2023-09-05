@@ -2,7 +2,6 @@ package org.torusresearch.fetchnodedetails;
 
 import com.google.gson.GsonBuilder;
 
-import org.json.JSONObject;
 import org.torusresearch.fetchnodedetails.types.APIUtils;
 import org.torusresearch.fetchnodedetails.types.FNDResponse;
 import org.torusresearch.fetchnodedetails.types.LegacyNetworkMigrationInfo;
@@ -135,9 +134,8 @@ public class FetchNodeDetails {
             String fndServerEndpoint = "https://fnd.tor.us/node-details";
             String url = fndServerEndpoint + "?network=" + this.torusNetwork + "&verifier=" + verifier + "&verifierId=" + verifierId;
             CompletableFuture<String> response = APIUtils.get(url);
-            JSONObject jsonObject = new JSONObject(response.get());
             FNDResponse fndResponse =
-                    new GsonBuilder().disableHtmlEscaping().create().fromJson(jsonObject.toString(), FNDResponse.class);
+                    new GsonBuilder().disableHtmlEscaping().create().fromJson(response.get(), FNDResponse.class);
             cf.complete(fndResponse.getNodeDetails());
             return cf;
         } catch (Exception ex) {
