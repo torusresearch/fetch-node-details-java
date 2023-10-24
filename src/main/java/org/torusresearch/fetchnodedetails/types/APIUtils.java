@@ -12,7 +12,6 @@ import okhttp3.Callback;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.internal.http2.Header;
 
@@ -42,34 +41,12 @@ public class APIUtils {
         };
     }
 
-    public static CompletableFuture<String> post(String url, String data) {
-        return _post(url, data, new Header[0]);
-    }
-
-    public static CompletableFuture<String> post(String url, String data, Header[] headers) {
-        return _post(url, data, headers);
-    }
-
     public static CompletableFuture<String> get(String url) {
         return _get(url, new Header[0]);
     }
 
     public static CompletableFuture<String> get(String url, Header[] headers) {
         return _get(url, headers);
-    }
-
-    private static CompletableFuture<String> _post(String url, String data, Header[] headers) {
-        RequestBody body = RequestBody.create(data, JSON);
-        Request.Builder requestBuilder = new Request.Builder()
-                .url(url)
-                .post(body);
-        for (Header header : headers) {
-            requestBuilder.addHeader(header.name.utf8(), header.value.utf8());
-        }
-        Request request = requestBuilder.build();
-        CompletableFuture<String> future = new CompletableFuture<>();
-        client.newCall(request).enqueue(toCallback(future));
-        return future;
     }
 
     private static CompletableFuture<String> _get(String url, Header[] headers) {
