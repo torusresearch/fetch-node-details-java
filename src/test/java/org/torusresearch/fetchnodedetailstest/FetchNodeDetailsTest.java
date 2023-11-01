@@ -17,7 +17,7 @@ class FetchNodeDetailsTest {
     @DisplayName("Gets the Node details for Mainnet")
     @Test
     public void shouldGetNodeDetailsMainnet() throws ExecutionException, InterruptedException {
-        fetchNodeDetails = new FetchNodeDetails();
+        fetchNodeDetails = new FetchNodeDetails(TorusNetwork.MAINNET);
         NodeDetails nodeDetails = this.fetchNodeDetails.getNodeDetails("google", "hello@tor.us").get();
         assertEquals(Config.MAINNET, nodeDetails);
     }
@@ -65,7 +65,7 @@ class FetchNodeDetailsTest {
     @DisplayName("Gets the Node details for SapphireMainnet")
     @Test
     public void shouldGetNodeDetailsSapphireMainnet() throws ExecutionException, InterruptedException {
-        fetchNodeDetails = new FetchNodeDetails(TorusNetwork.SAPPHIRE_MAINNET);
+        fetchNodeDetails = new FetchNodeDetails();
         NodeDetails nodeDetails = this.fetchNodeDetails.getNodeDetails("google", "hello@tor.us").get();
         assertEquals(Config.SAPPHIRE_MAINNET, nodeDetails);
     }
