@@ -2,6 +2,7 @@ package org.torusresearch.fetchnodedetails.types;
 
 import java.math.BigInteger;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Utils {
 
@@ -106,4 +107,26 @@ public class Utils {
         }
         return nodeDetails;
     }
+
+    public static final Map<TorusNetwork, String> NETWORK_MAP = new HashMap<TorusNetwork, String>() {
+        {
+            put(TorusNetwork.MAINNET, "mainnet");
+            put(TorusNetwork.TESTNET, "goerli");
+            put(TorusNetwork.CYAN, "polygon-mainnet");
+            put(TorusNetwork.AQUA, "polygon-mainnet");
+            put(TorusNetwork.CELESTE, "polygon-mainnet");
+
+        }
+    };
+
+    public static final Map<TorusNetwork, String> SIGNER_MAP = new HashMap<TorusNetwork, String>() {
+        {
+            put(TorusNetwork.MAINNET, "https://signer.tor.us");
+            put(TorusNetwork.TESTNET, "https://signer.tor.us");
+            put(TorusNetwork.CYAN, "https://signer-polygon.tor.us");
+            put(TorusNetwork.AQUA, "https://signer-polygon.tor.us");
+            put(TorusNetwork.CELESTE, "https://signer-polygon.tor.us");
+
+        }
+    };
 }

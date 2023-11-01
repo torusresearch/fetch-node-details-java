@@ -4,13 +4,11 @@ import com.google.gson.GsonBuilder;
 
 import org.torusresearch.fetchnodedetails.types.APIUtils;
 import org.torusresearch.fetchnodedetails.types.FNDResponse;
-import org.torusresearch.fetchnodedetails.types.LegacyNetworkMigrationInfo;
 import org.torusresearch.fetchnodedetails.types.NodeDetails;
 import org.torusresearch.fetchnodedetails.types.TorusNetwork;
 import org.torusresearch.fetchnodedetails.types.Utils;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
