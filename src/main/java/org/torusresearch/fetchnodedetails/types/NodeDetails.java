@@ -1,13 +1,16 @@
 package org.torusresearch.fetchnodedetails.types;
 
+import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class NodeDetails {
+public class NodeDetails implements Serializable {
     private String currentEpoch;
-    private String nodeListAddress;
     private String[] torusNodeEndpoints;
+    private String[] torusNodeSSSEndpoints;
+    private String[] torusNodeRSSEndpoints;
+    private String[] torusNodeTSSEndpoints;
     private BigInteger[] torusIndexes;
     private TorusNodePub[] torusNodePub;
     private Boolean updated = false;
@@ -15,10 +18,14 @@ public class NodeDetails {
     public NodeDetails() {
     }
 
-    public NodeDetails(String _currentEpoch, String _nodeListAddress, String[] _torusNodeEndpoints, BigInteger[] _torusIndexes, TorusNodePub[] _torusNodePub, Boolean _updated) {
+    public NodeDetails(String _currentEpoch, String[] _torusNodeEndpoints,
+                       String[] _torusNodeSSSEndpoints, String[] _torusNodeRSSEndpoints, String[] _torusNodeTSSEndpoints,
+                       BigInteger[] _torusIndexes, TorusNodePub[] _torusNodePub, Boolean _updated) {
         this.currentEpoch = _currentEpoch;
-        this.nodeListAddress = _nodeListAddress;
         this.torusNodeEndpoints = _torusNodeEndpoints.clone();
+        this.torusNodeSSSEndpoints = _torusNodeSSSEndpoints.clone();
+        this.torusNodeRSSEndpoints = _torusNodeRSSEndpoints.clone();
+        this.torusNodeTSSEndpoints = _torusNodeTSSEndpoints.clone();
         this.torusIndexes = _torusIndexes.clone();
         this.torusNodePub = _torusNodePub.clone();
         this.updated = _updated;
@@ -48,12 +55,28 @@ public class NodeDetails {
         this.currentEpoch = currentEpoch;
     }
 
-    public String getNodeListAddress() {
-        return nodeListAddress;
+    public String[] getTorusNodeSSSEndpoints() {
+        return torusNodeSSSEndpoints;
     }
 
-    public void setNodeListAddress(String nodeListAddress) {
-        this.nodeListAddress = nodeListAddress;
+    public void setTorusNodeSSSEndpoints(String[] torusNodeSSSEndpoints) {
+        this.torusNodeSSSEndpoints = torusNodeSSSEndpoints;
+    }
+
+    public String[] getTorusNodeRSSEndpoints() {
+        return torusNodeRSSEndpoints;
+    }
+
+    public void setTorusNodeRSSEndpoints(String[] torusNodeRSSEndpoints) {
+        this.torusNodeRSSEndpoints = torusNodeRSSEndpoints;
+    }
+
+    public String[] getTorusNodeTSSEndpoints() {
+        return torusNodeTSSEndpoints;
+    }
+
+    public void setTorusNodeTSSEndpoints(String[] torusNodeTSSEndpoints) {
+        this.torusNodeTSSEndpoints = torusNodeTSSEndpoints;
     }
 
     public String[] getTorusNodeEndpoints() {
@@ -76,8 +99,10 @@ public class NodeDetails {
     public String toString() {
         return "NodeDetails{" +
                 "currentEpoch='" + currentEpoch + '\'' +
-                ", nodeListAddress='" + nodeListAddress + '\'' +
                 ", torusNodeEndpoints=" + Arrays.toString(torusNodeEndpoints) +
+                ", torusNodeSSSEndpoints=" + Arrays.toString(torusNodeSSSEndpoints) +
+                ", torusNodeRSSEndpoints=" + Arrays.toString(torusNodeRSSEndpoints) +
+                ", torusNodeTSSEndpoints=" + Arrays.toString(torusNodeTSSEndpoints) +
                 ", torusIndexes=" + Arrays.toString(torusIndexes) +
                 ", torusNodePub=" + Arrays.toString(torusNodePub) +
                 ", updated=" + updated +
@@ -89,15 +114,21 @@ public class NodeDetails {
         if (this == o) return true;
         if (!(o instanceof NodeDetails)) return false;
         NodeDetails that = (NodeDetails) o;
-        return Objects.equals(getCurrentEpoch(), that.getCurrentEpoch()) && Objects.equals(getNodeListAddress(), that.getNodeListAddress())
-                && Arrays.equals(getTorusNodeEndpoints(), that.getTorusNodeEndpoints()) && Arrays.equals(getTorusIndexes(), that.getTorusIndexes()) &&
+        return Objects.equals(getCurrentEpoch(), that.getCurrentEpoch()) && Arrays.equals(getTorusNodeEndpoints(), that.getTorusNodeEndpoints())
+                && Arrays.equals(getTorusNodeSSSEndpoints(), that.getTorusNodeSSSEndpoints())
+                && Arrays.equals(getTorusNodeRSSEndpoints(), that.getTorusNodeRSSEndpoints())
+                && Arrays.equals(getTorusNodeTSSEndpoints(), that.getTorusNodeTSSEndpoints())
+                && Arrays.equals(getTorusIndexes(), that.getTorusIndexes()) &&
                 Arrays.equals(getTorusNodePub(), that.getTorusNodePub()) && Objects.equals(getUpdated(), that.getUpdated());
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(getCurrentEpoch(), getNodeListAddress(), getUpdated());
+        int result = Objects.hash(getCurrentEpoch(), getUpdated());
         result = 31 * result + Arrays.hashCode(getTorusNodeEndpoints());
+        result = 31 * result + Arrays.hashCode(getTorusNodeSSSEndpoints());
+        result = 31 * result + Arrays.hashCode(getTorusNodeRSSEndpoints());
+        result = 31 * result + Arrays.hashCode(getTorusNodeTSSEndpoints());
         result = 31 * result + Arrays.hashCode(getTorusIndexes());
         result = 31 * result + Arrays.hashCode(getTorusNodePub());
         return result;
