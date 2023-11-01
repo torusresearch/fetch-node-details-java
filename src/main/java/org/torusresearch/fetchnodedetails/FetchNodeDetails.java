@@ -19,10 +19,10 @@ public class FetchNodeDetails {
     private List<String> multi_cluster_networks = Arrays.asList("celeste");
 
     private final NodeDetails nodeDetails = new NodeDetails();
-    private TorusNetwork torusNetwork = TorusNetwork.MAINNET;
+    private TorusNetwork torusNetwork = TorusNetwork.SAPPHIRE_MAINNET;
 
     public FetchNodeDetails() {
-        this(TorusNetwork.MAINNET);
+        this(TorusNetwork.SAPPHIRE_MAINNET);
     }
 
     public FetchNodeDetails(TorusNetwork network) {
