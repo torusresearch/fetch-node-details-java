@@ -4,48 +4,23 @@ import com.google.gson.GsonBuilder;
 
 import org.torusresearch.fetchnodedetails.types.APIUtils;
 import org.torusresearch.fetchnodedetails.types.FNDResponse;
-import org.torusresearch.fetchnodedetails.types.LegacyNetworkMigrationInfo;
 import org.torusresearch.fetchnodedetails.types.NodeDetails;
 import org.torusresearch.fetchnodedetails.types.TorusNetwork;
 import org.torusresearch.fetchnodedetails.types.Utils;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public class FetchNodeDetails {
 
-    public static HashMap<TorusNetwork, String> NETWORK_MAP = new HashMap<TorusNetwork, String>() {
-        {
-            put(TorusNetwork.MAINNET, "mainnet");
-            put(TorusNetwork.TESTNET, "goerli");
-            put(TorusNetwork.CYAN, "polygon-mainnet");
-            put(TorusNetwork.AQUA, "polygon-mainnet");
-            put(TorusNetwork.CELESTE, "polygon-mainnet");
-            put(TorusNetwork.SAPPHIRE_DEVNET, "sapphire_devnet");
-            put(TorusNetwork.SAPPHIRE_MAINNET, "sapphire_mainnet");
-
-        }
-    };
-
-    public static HashMap<String, LegacyNetworkMigrationInfo> LEGACY_NETWORKS_ROUTE_MAP = new HashMap<String, LegacyNetworkMigrationInfo>() {
-        {
-            put(TorusNetwork.AQUA.toString(), new LegacyNetworkMigrationInfo(true, "aqua", TorusNetwork.SAPPHIRE_MAINNET));
-            put(TorusNetwork.CELESTE.toString(), new LegacyNetworkMigrationInfo(true, "celeste", TorusNetwork.SAPPHIRE_MAINNET));
-            put(TorusNetwork.CYAN.toString(), new LegacyNetworkMigrationInfo(true, "cyan", TorusNetwork.SAPPHIRE_MAINNET));
-            put(TorusNetwork.MAINNET.toString(), new LegacyNetworkMigrationInfo(true, "mainnet", TorusNetwork.SAPPHIRE_MAINNET));
-            put(TorusNetwork.TESTNET.toString(), new LegacyNetworkMigrationInfo(true, "teal", TorusNetwork.SAPPHIRE_DEVNET));
-        }
-    };
-
-    private List<String> multi_cluster_networks = Arrays.asList("aqua", "celeste", "cyan");
+    private List<String> multi_cluster_networks = Arrays.asList("celeste");
 
     private final NodeDetails nodeDetails = new NodeDetails();
-    private TorusNetwork torusNetwork = TorusNetwork.MAINNET;
+    private TorusNetwork torusNetwork = TorusNetwork.SAPPHIRE_MAINNET;
 
     public FetchNodeDetails() {
-        this(TorusNetwork.MAINNET);
+        this(TorusNetwork.SAPPHIRE_MAINNET);
     }
 
     public FetchNodeDetails(TorusNetwork network) {
@@ -64,13 +39,29 @@ public class FetchNodeDetails {
             CompletableFuture<String> response = APIUtils.get(url);
             FNDResponse fndResponse =
                     new GsonBuilder().disableHtmlEscaping().create().fromJson(response.get(), FNDResponse.class);
-            cf.complete(fndResponse.getNodeDetails());
+            this.setNodeDetails(fndResponse.getNodeDetails(), true);
+            cf.complete(this.nodeDetails);
             return cf;
         } catch (Exception ex) {
-            cf.completeExceptionally(new Exception("Failed to fetch node details from server"));
+            ex.printStackTrace();
         }
         NodeDetails nodeDetails = Utils.fetchLocalConfig(this.torusNetwork);
-        cf.complete(nodeDetails);
+        if (nodeDetails == null) cf.completeExceptionally(new Exception("Failed to fetch node details"));
+        else {
+            this.setNodeDetails(nodeDetails, false);
+            cf.complete(this.nodeDetails);
+        }
         return cf;
+    }
+
+    private void setNodeDetails(NodeDetails nodeDetails, boolean updated) {
+        this.nodeDetails.setTorusNodeEndpoints(nodeDetails.getTorusNodeEndpoints());
+        this.nodeDetails.setTorusNodePub(nodeDetails.getTorusNodePub());
+        this.nodeDetails.setCurrentEpoch(nodeDetails.getCurrentEpoch());
+        this.nodeDetails.setUpdated(updated);
+        this.nodeDetails.setTorusIndexes(nodeDetails.getTorusIndexes());
+        this.nodeDetails.setTorusNodeRSSEndpoints(nodeDetails.getTorusNodeRSSEndpoints());
+        this.nodeDetails.setTorusNodeSSSEndpoints(nodeDetails.getTorusNodeSSSEndpoints());
+        this.nodeDetails.setTorusNodeTSSEndpoints(nodeDetails.getTorusNodeTSSEndpoints());
     }
 }

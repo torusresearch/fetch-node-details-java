@@ -2,7 +2,7 @@ plugins {
     id 'java-library'
 }
 
-apply plugin: 'maven'
+apply plugin: 'maven-publish'
 
 group 'org.torusresearch'
 version '1.0.10'

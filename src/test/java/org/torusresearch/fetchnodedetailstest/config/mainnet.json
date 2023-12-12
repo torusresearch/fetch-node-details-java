@@ -1,32 +1,32 @@
 {
   "currentEpoch": "1",
   "torusNodeEndpoints": [
-    "https://sapphire-1.auth.network/sss/mainnet/jrpc",
-    "https://sapphire-2.auth.network/sss/mainnet/jrpc",
-    "https://sapphire-3.auth.network/sss/mainnet/jrpc",
-    "https://sapphire-4.auth.network/sss/mainnet/jrpc",
-    "https://sapphire-5.auth.network/sss/mainnet/jrpc"
+    "https://node-1.node.web3auth.io/sss/mainnet/jrpc",
+    "https://node-2.node.web3auth.io/sss/mainnet/jrpc",
+    "https://node-3.node.web3auth.io/sss/mainnet/jrpc",
+    "https://node-4.node.web3auth.io/sss/mainnet/jrpc",
+    "https://node-5.node.web3auth.io/sss/mainnet/jrpc"
   ],
   "torusNodeSSSEndpoints": [
-    "https://sapphire-1.auth.network/sss/mainnet/jrpc",
-    "https://sapphire-2.auth.network/sss/mainnet/jrpc",
-    "https://sapphire-3.auth.network/sss/mainnet/jrpc",
-    "https://sapphire-4.auth.network/sss/mainnet/jrpc",
-    "https://sapphire-5.auth.network/sss/mainnet/jrpc"
+    "https://node-1.node.web3auth.io/sss/mainnet/jrpc",
+    "https://node-2.node.web3auth.io/sss/mainnet/jrpc",
+    "https://node-3.node.web3auth.io/sss/mainnet/jrpc",
+    "https://node-4.node.web3auth.io/sss/mainnet/jrpc",
+    "https://node-5.node.web3auth.io/sss/mainnet/jrpc"
   ],
   "torusNodeRSSEndpoints": [
-    "https://sapphire-1.auth.network/rss/mainnet",
-    "https://sapphire-2.auth.network/rss/mainnet",
-    "https://sapphire-3.auth.network/rss/mainnet",
-    "https://sapphire-4.auth.network/rss/mainnet",
-    "https://sapphire-5.auth.network/rss/mainnet"
+    "https://node-1.node.web3auth.io/rss/mainnet",
+    "https://node-2.node.web3auth.io/rss/mainnet",
+    "https://node-3.node.web3auth.io/rss/mainnet",
+    "https://node-4.node.web3auth.io/rss/mainnet",
+    "https://node-5.node.web3auth.io/rss/mainnet"
   ],
   "torusNodeTSSEndpoints": [
-    "https://sapphire-1.auth.network/tss/mainnet",
-    "https://sapphire-2.auth.network/tss/mainnet",
-    "https://sapphire-3.auth.network/tss/mainnet",
-    "https://sapphire-4.auth.network/tss/mainnet",
-    "https://sapphire-5.auth.network/tss/mainnet"
+    "https://node-1.node.web3auth.io/tss/mainnet",
+    "https://node-2.node.web3auth.io/tss/mainnet",
+    "https://node-3.node.web3auth.io/tss/mainnet",
+    "https://node-4.node.web3auth.io/tss/mainnet",
+    "https://node-5.node.web3auth.io/tss/mainnet"
   ],
   "torusNodePub": [
     {
@@ -57,5 +57,5 @@
     4,
     5
   ],
-  "updated": false
+  "updated": true
 }

@@ -1,32 +1,32 @@
 {
   "currentEpoch": "1",
   "torusNodeEndpoints": [
-    "https://sapphire-1.auth.network/sss/cyan/jrpc",
-    "https://sapphire-2.auth.network/sss/cyan/jrpc",
-    "https://sapphire-3.auth.network/sss/cyan/jrpc",
-    "https://sapphire-4.auth.network/sss/cyan/jrpc",
-    "https://sapphire-5.auth.network/sss/cyan/jrpc"
+    "https://node-1.node.web3auth.io/sss/cyan/jrpc",
+    "https://node-2.node.web3auth.io/sss/cyan/jrpc",
+    "https://node-3.node.web3auth.io/sss/cyan/jrpc",
+    "https://node-4.node.web3auth.io/sss/cyan/jrpc",
+    "https://node-5.node.web3auth.io/sss/cyan/jrpc"
   ],
   "torusNodeSSSEndpoints": [
-    "https://sapphire-1.auth.network/sss/cyan/jrpc",
-    "https://sapphire-2.auth.network/sss/cyan/jrpc",
-    "https://sapphire-3.auth.network/sss/cyan/jrpc",
-    "https://sapphire-4.auth.network/sss/cyan/jrpc",
-    "https://sapphire-5.auth.network/sss/cyan/jrpc"
+    "https://node-1.node.web3auth.io/sss/cyan/jrpc",
+    "https://node-2.node.web3auth.io/sss/cyan/jrpc",
+    "https://node-3.node.web3auth.io/sss/cyan/jrpc",
+    "https://node-4.node.web3auth.io/sss/cyan/jrpc",
+    "https://node-5.node.web3auth.io/sss/cyan/jrpc"
   ],
   "torusNodeRSSEndpoints": [
-    "https://sapphire-1.auth.network/rss/cyan",
-    "https://sapphire-2.auth.network/rss/cyan",
-    "https://sapphire-3.auth.network/rss/cyan",
-    "https://sapphire-4.auth.network/rss/cyan",
-    "https://sapphire-5.auth.network/rss/cyan"
+    "https://node-1.node.web3auth.io/rss/cyan",
+    "https://node-2.node.web3auth.io/rss/cyan",
+    "https://node-3.node.web3auth.io/rss/cyan",
+    "https://node-4.node.web3auth.io/rss/cyan",
+    "https://node-5.node.web3auth.io/rss/cyan"
   ],
   "torusNodeTSSEndpoints": [
-    "https://sapphire-1.auth.network/tss/cyan",
-    "https://sapphire-2.auth.network/tss/cyan",
-    "https://sapphire-3.auth.network/tss/cyan",
-    "https://sapphire-4.auth.network/tss/cyan",
-    "https://sapphire-5.auth.network/tss/cyan"
+    "https://node-1.node.web3auth.io/tss/cyan",
+    "https://node-2.node.web3auth.io/tss/cyan",
+    "https://node-3.node.web3auth.io/tss/cyan",
+    "https://node-4.node.web3auth.io/tss/cyan",
+    "https://node-5.node.web3auth.io/tss/cyan"
   ],
   "torusNodePub": [
     {
@@ -51,5 +51,5 @@
     }
   ],
   "torusIndexes": [1, 2, 3, 4, 5],
-  "updated": false
+  "updated": true
 }

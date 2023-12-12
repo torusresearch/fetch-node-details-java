@@ -1,32 +1,32 @@
 {
   "currentEpoch": "1",
   "torusNodeEndpoints": [
-    "https://sapphire-dev-2-1.authnetwork.dev/sss/teal/jrpc",
-    "https://sapphire-dev-2-2.authnetwork.dev/sss/teal/jrpc",
-    "https://sapphire-dev-2-3.authnetwork.dev/sss/teal/jrpc",
-    "https://sapphire-dev-2-4.authnetwork.dev/sss/teal/jrpc",
-    "https://sapphire-dev-2-5.authnetwork.dev/sss/teal/jrpc"
+    "https://node-1.dev-node.web3auth.io/sss/teal/jrpc",
+    "https://node-2.dev-node.web3auth.io/sss/teal/jrpc",
+    "https://node-3.dev-node.web3auth.io/sss/teal/jrpc",
+    "https://node-4.dev-node.web3auth.io/sss/teal/jrpc",
+    "https://node-5.dev-node.web3auth.io/sss/teal/jrpc"
   ],
   "torusNodeSSSEndpoints": [
-    "https://sapphire-dev-2-1.authnetwork.dev/sss/teal/jrpc",
-    "https://sapphire-dev-2-2.authnetwork.dev/sss/teal/jrpc",
-    "https://sapphire-dev-2-3.authnetwork.dev/sss/teal/jrpc",
-    "https://sapphire-dev-2-4.authnetwork.dev/sss/teal/jrpc",
-    "https://sapphire-dev-2-5.authnetwork.dev/sss/teal/jrpc"
+    "https://node-1.dev-node.web3auth.io/sss/teal/jrpc",
+    "https://node-2.dev-node.web3auth.io/sss/teal/jrpc",
+    "https://node-3.dev-node.web3auth.io/sss/teal/jrpc",
+    "https://node-4.dev-node.web3auth.io/sss/teal/jrpc",
+    "https://node-5.dev-node.web3auth.io/sss/teal/jrpc"
   ],
   "torusNodeRSSEndpoints": [
-    "https://sapphire-dev-2-1.authnetwork.dev/rss/teal",
-    "https://sapphire-dev-2-2.authnetwork.dev/rss/teal",
-    "https://sapphire-dev-2-3.authnetwork.dev/rss/teal",
-    "https://sapphire-dev-2-4.authnetwork.dev/rss/teal",
-    "https://sapphire-dev-2-5.authnetwork.dev/rss/teal"
+    "https://node-1.dev-node.web3auth.io/rss/teal",
+    "https://node-2.dev-node.web3auth.io/rss/teal",
+    "https://node-3.dev-node.web3auth.io/rss/teal",
+    "https://node-4.dev-node.web3auth.io/rss/teal",
+    "https://node-5.dev-node.web3auth.io/rss/teal"
   ],
   "torusNodeTSSEndpoints": [
-    "https://sapphire-dev-2-1.authnetwork.dev/tss/teal",
-    "https://sapphire-dev-2-2.authnetwork.dev/tss/teal",
-    "https://sapphire-dev-2-3.authnetwork.dev/tss/teal",
-    "https://sapphire-dev-2-4.authnetwork.dev/tss/teal",
-    "https://sapphire-dev-2-5.authnetwork.dev/tss/teal"
+    "https://node-1.dev-node.web3auth.io/tss/teal",
+    "https://node-2.dev-node.web3auth.io/tss/teal",
+    "https://node-3.dev-node.web3auth.io/tss/teal",
+    "https://node-4.dev-node.web3auth.io/tss/teal",
+    "https://node-5.dev-node.web3auth.io/tss/teal"
   ],
   "torusNodePub": [
     {
@@ -57,5 +57,5 @@
     4,
     5
   ],
-  "updated": false
+  "updated": true
 }

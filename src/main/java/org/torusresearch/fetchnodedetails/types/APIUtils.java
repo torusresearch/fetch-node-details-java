@@ -17,7 +17,7 @@ import okhttp3.internal.http2.Header;
 
 public class APIUtils {
     public static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
-    private static final OkHttpClient client = new OkHttpClient().newBuilder().writeTimeout(12, TimeUnit.SECONDS).build();
+    private static final OkHttpClient client = new OkHttpClient().newBuilder().writeTimeout(10, TimeUnit.SECONDS).build();
 
     private APIUtils() {
     }

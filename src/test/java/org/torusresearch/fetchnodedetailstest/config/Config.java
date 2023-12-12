@@ -15,7 +15,6 @@ public class Config {
     public static NodeDetails AQUA;
     public static NodeDetails CELESTE;
     public static NodeDetails SAPPHIRE_DEVNET;
-    public static NodeDetails SAPPHIRE_TESTNET;
     public static NodeDetails SAPPHIRE_MAINNET;
 
     static {
@@ -27,7 +26,6 @@ public class Config {
             AQUA = getNodeDetailsFromFile(basePath + "aqua.json");
             CELESTE = getNodeDetailsFromFile(basePath + "celeste.json");
             SAPPHIRE_DEVNET = getNodeDetailsFromFile(basePath + "sapphire_devnet.json");
-            SAPPHIRE_TESTNET = getNodeDetailsFromFile(basePath + "sapphire_testnet.json");
             SAPPHIRE_MAINNET = getNodeDetailsFromFile(basePath + "sapphire_mainnet.json");
         } catch (Exception ex) {
             ex.printStackTrace();
