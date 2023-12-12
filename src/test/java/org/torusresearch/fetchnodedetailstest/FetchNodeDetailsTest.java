@@ -24,7 +24,7 @@ class FetchNodeDetailsTest {
 
     @DisplayName("Gets the Node details for Testnet")
     @Test
-    public void shouldGetNodeDetailsRopsten() throws ExecutionException, InterruptedException {
+    public void shouldGetNodeDetailsTestnet() throws ExecutionException, InterruptedException {
         fetchNodeDetails = new FetchNodeDetails(TorusNetwork.TESTNET);
         NodeDetails nodeDetails = this.fetchNodeDetails.getNodeDetails("google", "hello@tor.us").get();
         assertEquals(Config.TESTNET, nodeDetails);

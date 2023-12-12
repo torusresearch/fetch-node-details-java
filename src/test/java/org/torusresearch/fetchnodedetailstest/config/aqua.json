@@ -2,32 +2,32 @@
   "currentEpoch": "1",
   "nodeListAddress": "0x29Dea82a0509153b91040ee13cDBba0f03efb625",
   "torusNodeEndpoints": [
-    "https://sapphire-1.auth.network/sss/aqua/jrpc",
-    "https://sapphire-2.auth.network/sss/aqua/jrpc",
-    "https://sapphire-3.auth.network/sss/aqua/jrpc",
-    "https://sapphire-4.auth.network/sss/aqua/jrpc",
-    "https://sapphire-5.auth.network/sss/aqua/jrpc"
+    "https://node-1.node.web3auth.io/sss/aqua/jrpc",
+    "https://node-2.node.web3auth.io/sss/aqua/jrpc",
+    "https://node-3.node.web3auth.io/sss/aqua/jrpc",
+    "https://node-4.node.web3auth.io/sss/aqua/jrpc",
+    "https://node-5.node.web3auth.io/sss/aqua/jrpc"
   ],
   "torusNodeSSSEndpoints": [
-    "https://sapphire-1.auth.network/sss/aqua/jrpc",
-    "https://sapphire-2.auth.network/sss/aqua/jrpc",
-    "https://sapphire-3.auth.network/sss/aqua/jrpc",
-    "https://sapphire-4.auth.network/sss/aqua/jrpc",
-    "https://sapphire-5.auth.network/sss/aqua/jrpc"
+    "https://node-1.node.web3auth.io/sss/aqua/jrpc",
+    "https://node-2.node.web3auth.io/sss/aqua/jrpc",
+    "https://node-3.node.web3auth.io/sss/aqua/jrpc",
+    "https://node-4.node.web3auth.io/sss/aqua/jrpc",
+    "https://node-5.node.web3auth.io/sss/aqua/jrpc"
   ],
   "torusNodeRSSEndpoints": [
-    "https://sapphire-1.auth.network/rss/aqua",
-    "https://sapphire-2.auth.network/rss/aqua",
-    "https://sapphire-3.auth.network/rss/aqua",
-    "https://sapphire-4.auth.network/rss/aqua",
-    "https://sapphire-5.auth.network/rss/aqua"
+    "https://node-1.node.web3auth.io/rss/aqua",
+    "https://node-2.node.web3auth.io/rss/aqua",
+    "https://node-3.node.web3auth.io/rss/aqua",
+    "https://node-4.node.web3auth.io/rss/aqua",
+    "https://node-5.node.web3auth.io/rss/aqua"
   ],
   "torusNodeTSSEndpoints": [
-    "https://sapphire-1.auth.network/tss/aqua",
-    "https://sapphire-2.auth.network/tss/aqua",
-    "https://sapphire-3.auth.network/tss/aqua",
-    "https://sapphire-4.auth.network/tss/aqua",
-    "https://sapphire-5.auth.network/tss/aqua"
+    "https://node-1.node.web3auth.io/tss/aqua",
+    "https://node-2.node.web3auth.io/tss/aqua",
+    "https://node-3.node.web3auth.io/tss/aqua",
+    "https://node-4.node.web3auth.io/tss/aqua",
+    "https://node-5.node.web3auth.io/tss/aqua"
   ],
   "torusNodePub": [
     {
