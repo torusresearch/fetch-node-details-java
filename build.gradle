@@ -5,13 +5,16 @@ plugins {
 apply plugin: 'maven-publish'
 
 group 'org.torusresearch'
-version '1.0.10'
+version '4.1.0'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 repositories {
     mavenCentral()
+    maven {
+        url "https://jitpack.io"
+    }
 }
 
 dependencies {
@@ -33,4 +36,12 @@ compileJava {
 }
 compileTestJava {
     options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
 }
