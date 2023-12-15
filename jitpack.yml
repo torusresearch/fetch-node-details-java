@@ -1,4 +1,0 @@
-jdk:
-  - openjdk11
-install:
-  - ./gradlew :fetch-node-details-java:build :fetch-node-details-java:publishToMavenLocal
