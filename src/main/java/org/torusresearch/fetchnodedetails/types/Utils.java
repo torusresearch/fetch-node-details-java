@@ -121,12 +121,13 @@ public class Utils {
 
     public static final Map<TorusNetwork, String> SIGNER_MAP = new HashMap<TorusNetwork, String>() {
         {
-            put(TorusNetwork.MAINNET, "https://signer.tor.us");
-            put(TorusNetwork.TESTNET, "https://signer.tor.us");
-            put(TorusNetwork.CYAN, "https://signer-polygon.tor.us");
-            put(TorusNetwork.AQUA, "https://signer-polygon.tor.us");
-            put(TorusNetwork.CELESTE, "https://signer-polygon.tor.us");
-
+            put(TorusNetwork.MAINNET, "https://signer.web3auth.io");
+            put(TorusNetwork.TESTNET, "https://signer.web3auth.io");
+            put(TorusNetwork.CYAN, "https://signer-polygon.web3auth.io");
+            put(TorusNetwork.AQUA, "https://signer-polygon.web3auth.io");
+            put(TorusNetwork.CELESTE, "https://signer-polygon.web3auth.io");
+            put(TorusNetwork.SAPPHIRE_MAINNET, "https://signer.web3auth.io");
+            put(TorusNetwork.SAPPHIRE_DEVNET, "https://signer.web3auth.io");
         }
     };
 }
