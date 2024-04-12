@@ -34,7 +34,7 @@ public class FetchNodeDetails {
 
         CompletableFuture<NodeDetails> cf = new CompletableFuture<>();
         try {
-            String fndServerEndpoint = "https://fnd.tor.us/node-details";
+            String fndServerEndpoint = "https://fnd.web3auth.io/node-details";
             String url = fndServerEndpoint + "?network=" + this.torusNetwork + "&verifier=" + verifier + "&verifierId=" + verifierId;
             CompletableFuture<String> response = APIUtils.get(url);
             FNDResponse fndResponse =
