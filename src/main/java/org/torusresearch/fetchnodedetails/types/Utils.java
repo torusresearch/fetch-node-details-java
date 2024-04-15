@@ -16,10 +16,10 @@ public class Utils {
         }
     };
 
-    public static NodeDetails NODE_DETAILS_TESTNET = new NodeDetails("1", new String[]{"https://sapphire-dev-2-1.authnetwork.dev/sss/teal/jrpc", "https://sapphire-dev-2-2.authnetwork.dev/sss/teal/jrpc", "https://sapphire-dev-2-3.authnetwork.dev/sss/teal/jrpc", "https://sapphire-dev-2-4.authnetwork.dev/sss/teal/jrpc", "https://sapphire-dev-2-5.authnetwork.dev/sss/teal/jrpc",},
-            new String[]{"https://sapphire-dev-2-1.authnetwork.dev/sss/teal/jrpc", "https://sapphire-dev-2-2.authnetwork.dev/sss/teal/jrpc", "https://sapphire-dev-2-3.authnetwork.dev/sss/teal/jrpc", "https://sapphire-dev-2-4.authnetwork.dev/sss/teal/jrpc", "https://sapphire-dev-2-5.authnetwork.dev/sss/teal/jrpc"},
-            new String[]{"https://sapphire-dev-2-1.authnetwork.dev/rss/teal", "https://sapphire-dev-2-2.authnetwork.dev/rss/teal", "https://sapphire-dev-2-3.authnetwork.dev/rss/teal", "https://sapphire-dev-2-4.authnetwork.dev/rss/teal", "https://sapphire-dev-2-5.authnetwork.dev/rss/teal"},
-            new String[]{"https://sapphire-dev-2-1.authnetwork.dev/tss/teal", "https://sapphire-dev-2-2.authnetwork.dev/tss/teal", "https://sapphire-dev-2-3.authnetwork.dev/tss/teal", "https://sapphire-dev-2-4.authnetwork.dev/tss/teal", "https://sapphire-dev-2-5.authnetwork.dev/tss/teal"},
+    public static NodeDetails NODE_DETAILS_TESTNET = new NodeDetails("1", new String[]{"https://node-1.dev-node.web3auth.io/sss/teal/jrpc", "https://node-2.dev-node.web3auth.io/sss/teal/jrpc", "https://node-3.dev-node.web3auth.io/sss/teal/jrpc", "https://node-4.dev-node.web3auth.io/sss/teal/jrpc", "https://node-5.dev-node.web3auth.io/sss/teal/jrpc",},
+            new String[]{"https://node-1.dev-node.web3auth.io/sss/teal/jrpc", "https://node-2.dev-node.web3auth.io/sss/teal/jrpc", "https://node-3.dev-node.web3auth.io/sss/teal/jrpc", "https://node-4.dev-node.web3auth.io/sss/teal/jrpc", "https://node-5.dev-node.web3auth.io/sss/teal/jrpc"},
+            new String[]{"https://node-1.dev-node.web3auth.io/rss/teal", "https://node-2.dev-node.web3auth.io/rss/teal", "https://node-3.dev-node.web3auth.io/rss/teal", "https://node-4.dev-node.web3auth.io/rss/teal", "https://node-5.dev-node.web3auth.io/rss/teal"},
+            new String[]{"https://node-1.dev-node.web3auth.io/tss/teal", "https://node-2.dev-node.web3auth.io/tss/teal", "https://node-3.dev-node.web3auth.io/tss/teal", "https://node-4.dev-node.web3auth.io/tss/teal", "https://node-5.dev-node.web3auth.io/tss/teal"},
             new BigInteger[]{new BigInteger("1"), new BigInteger("2"), new BigInteger("3"), new BigInteger("4"), new BigInteger("5")},
             new TorusNodePub[]{new TorusNodePub("f74389b0a4c8d10d2a687ae575f69b20f412d41ab7f1fe6b358aa14871327247", "54e3a73098ed9bced3ef8821736e9794f9264a1420c0c7ad15d2fa617ba35ef7"),
                     new TorusNodePub("bc38813a6873e526087918507c78fc3a61624670ee851ecfb4f3bef55d027b5a", "ac4b21229f662a0aefdfdac21cf17c3261a392c74a8790db218b34e3e4c1d56a"),
@@ -28,10 +28,10 @@ public class Utils {
                     new TorusNodePub("bf12a136ef94399ea098f926f04e26a4ec4ac70f69cce274e8893704c4951773", "bdd44828020f52ce510e026338216ada184a6867eb4e19fb4c2d495d4a7e15e4")},
             false);
 
-    public static NodeDetails NODE_DETAILS_MAINNET = new NodeDetails("1", new String[]{"https://sapphire-1.auth.network/sss/mainnet/jrpc", "https://sapphire-2.auth.network/sss/mainnet/jrpc", "https://sapphire-3.auth.network/sss/mainnet/jrpc", "https://sapphire-4.auth.network/sss/mainnet/jrpc", "https://sapphire-5.auth.network/sss/mainnet/jrpc"},
-            new String[]{"https://sapphire-1.auth.network/sss/mainnet/jrpc", "https://sapphire-2.auth.network/sss/mainnet/jrpc", "https://sapphire-3.auth.network/sss/mainnet/jrpc", "https://sapphire-4.auth.network/sss/mainnet/jrpc", "https://sapphire-5.auth.network/sss/mainnet/jrpc"},
-            new String[]{"https://sapphire-1.auth.network/rss/mainnet", "https://sapphire-2.auth.network/rss/mainnet", "https://sapphire-3.auth.network/rss/mainnet", "https://sapphire-4.auth.network/rss/mainnet", "https://sapphire-5.auth.network/rss/mainnet"},
-            new String[]{"https://sapphire-1.auth.network/tss/mainnet", "https://sapphire-2.auth.network/tss/mainnet", "https://sapphire-3.auth.network/tss/mainnet", "https://sapphire-4.auth.network/tss/mainnet", "https://sapphire-5.auth.network/tss/mainnet"},
+    public static NodeDetails NODE_DETAILS_MAINNET = new NodeDetails("1", new String[]{"https://node-1.node.web3auth.io/sss/mainnet/jrpc", "https://node-2.node.web3auth.io/sss/mainnet/jrpc", "https://node-3.node.web3auth.io/sss/mainnet/jrpc", "https://node-4.node.web3auth.io/sss/mainnet/jrpc", "https://node-5.node.web3auth.io/sss/mainnet/jrpc"},
+            new String[]{"https://node-1.node.web3auth.io/sss/mainnet/jrpc", "https://node-2.node.web3auth.io/sss/mainnet/jrpc", "https://node-3.node.web3auth.io/sss/mainnet/jrpc", "https://node-4.node.web3auth.io/sss/mainnet/jrpc", "https://node-5.node.web3auth.io/sss/mainnet/jrpc"},
+            new String[]{"https://node-1.node.web3auth.io/rss/mainnet", "https://node-2.node.web3auth.io/rss/mainnet", "https://node-3.node.web3auth.io/rss/mainnet", "https://node-4.node.web3auth.io/rss/mainnet", "https://node-5.node.web3auth.io/rss/mainnet"},
+            new String[]{"https://node-1.node.web3auth.io/tss/mainnet", "https://node-2.node.web3auth.io/tss/mainnet", "https://node-3.node.web3auth.io/tss/mainnet", "https://node-4.node.web3auth.io/tss/mainnet", "https://node-5.node.web3auth.io/tss/mainnet"},
             new BigInteger[]{new BigInteger("1"), new BigInteger("2"), new BigInteger("3"), new BigInteger("4"), new BigInteger("5")},
             new TorusNodePub[]{new TorusNodePub("e0925898fee0e9e941fdca7ee88deec99939ae9407e923535c4d4a3a3ff8b052", "54b9fea924e3f3e40791f9987f4234ae4222412d65b74068032fa5d8b63375c1"),
                     new TorusNodePub("9124cf1e280aab32ba50dffd2de81cecabc13d82d2c1fe9de82f3b3523f9b637", "fca939a1ceb42ce745c55b21ef094f543b457630cb63a94ef4f1afeee2b1f107"),
@@ -40,10 +40,10 @@ public class Utils {
                     new TorusNodePub("3ecbb6a68afe72cf34ec6c0a12b5cb78a0d2e83ba402983b6adbc5f36219861a", "dc1031c5cc8f0472bd521a62a64ebca9e163902c247bf05937daf4ae835091e4")},
             false);
 
-    public static NodeDetails NODE_DETAILS_CYAN = new NodeDetails("1", new String[]{"https://sapphire-1.auth.network/sss/cyan/jrpc", "https://sapphire-2.auth.network/sss/cyan/jrpc", "https://sapphire-3.auth.network/sss/cyan/jrpc", "https://sapphire-4.auth.network/sss/cyan/jrpc", "https://sapphire-5.auth.network/sss/cyan/jrpc"},
-            new String[]{"https://sapphire-1.auth.network/sss/cyan/jrpc", "https://sapphire-2.auth.network/sss/cyan/jrpc", "https://sapphire-3.auth.network/sss/cyan/jrpc", "https://sapphire-4.auth.network/sss/cyan/jrpc", "https://sapphire-5.auth.network/sss/cyan/jrpc"},
-            new String[]{"https://sapphire-1.auth.network/rss/cyan", "https://sapphire-2.auth.network/rss/cyan", "https://sapphire-3.auth.network/rss/cyan", "https://sapphire-4.auth.network/rss/cyan", "https://sapphire-5.auth.network/rss/cyan"},
-            new String[]{"https://sapphire-1.auth.network/tss/cyan", "https://sapphire-2.auth.network/tss/cyan", "https://sapphire-3.auth.network/tss/cyan", "https://sapphire-4.auth.network/tss/cyan", "https://sapphire-5.auth.network/tss/cyan"},
+    public static NodeDetails NODE_DETAILS_CYAN = new NodeDetails("1", new String[]{"https://node-1.node.web3auth.io/sss/cyan/jrpc", "https://node-2.node.web3auth.io/sss/cyan/jrpc", "https://node-3.node.web3auth.io/sss/cyan/jrpc", "https://node-4.node.web3auth.io/sss/cyan/jrpc", "https://node-5.node.web3auth.io/sss/cyan/jrpc"},
+            new String[]{"https://node-1.node.web3auth.io/sss/cyan/jrpc", "https://node-2.node.web3auth.io/sss/cyan/jrpc", "https://node-3.node.web3auth.io/sss/cyan/jrpc", "https://node-4.node.web3auth.io/sss/cyan/jrpc", "https://node-5.node.web3auth.io/sss/cyan/jrpc"},
+            new String[]{"https://node-1.node.web3auth.io/rss/cyan", "https://node-2.node.web3auth.io/rss/cyan", "https://node-3.node.web3auth.io/rss/cyan", "https://node-4.node.web3auth.io/rss/cyan", "https://node-5.node.web3auth.io/rss/cyan"},
+            new String[]{"https://node-1.node.web3auth.io/tss/cyan", "https://node-2.node.web3auth.io/tss/cyan", "https://node-3.node.web3auth.io/tss/cyan", "https://node-4.node.web3auth.io/tss/cyan", "https://node-5.node.web3auth.io/tss/cyan"},
             new BigInteger[]{new BigInteger("1"), new BigInteger("2"), new BigInteger("3"), new BigInteger("4"), new BigInteger("5")},
             new TorusNodePub[]{new TorusNodePub("e0925898fee0e9e941fdca7ee88deec99939ae9407e923535c4d4a3a3ff8b052", "54b9fea924e3f3e40791f9987f4234ae4222412d65b74068032fa5d8b63375c1"),
                     new TorusNodePub("9124cf1e280aab32ba50dffd2de81cecabc13d82d2c1fe9de82f3b3523f9b637", "fca939a1ceb42ce745c55b21ef094f543b457630cb63a94ef4f1afeee2b1f107"),
@@ -52,10 +52,10 @@ public class Utils {
                     new TorusNodePub("3ecbb6a68afe72cf34ec6c0a12b5cb78a0d2e83ba402983b6adbc5f36219861a", "dc1031c5cc8f0472bd521a62a64ebca9e163902c247bf05937daf4ae835091e4")},
             false);
 
-    public static NodeDetails NODE_DETAILS_AQUA = new NodeDetails("1", new String[]{"https://sapphire-1.auth.network/sss/aqua/jrpc", "https://sapphire-2.auth.network/sss/aqua/jrpc", "https://sapphire-3.auth.network/sss/aqua/jrpc", "https://sapphire-4.auth.network/sss/aqua/jrpc", "https://sapphire-5.auth.network/sss/aqua/jrpc"},
-            new String[]{"https://sapphire-1.auth.network/sss/aqua/jrpc", "https://sapphire-2.auth.network/sss/aqua/jrpc", "https://sapphire-3.auth.network/sss/aqua/jrpc", "https://sapphire-4.auth.network/sss/aqua/jrpc", "https://sapphire-5.auth.network/sss/aqua/jrpc"},
-            new String[]{"https://sapphire-1.auth.network/rss/aqua", "https://sapphire-2.auth.network/rss/aqua", "https://sapphire-3.auth.network/rss/aqua", "https://sapphire-4.auth.network/rss/aqua", "https://sapphire-5.auth.network/rss/aqua"},
-            new String[]{"https://sapphire-1.auth.network/tss/aqua", "https://sapphire-2.auth.network/tss/aqua", "https://sapphire-3.auth.network/tss/aqua", "https://sapphire-4.auth.network/tss/aqua", "https://sapphire-5.auth.network/tss/aqua"},
+    public static NodeDetails NODE_DETAILS_AQUA = new NodeDetails("1", new String[]{"https://node-1.node.web3auth.io/sss/aqua/jrpc", "https://node-2.node.web3auth.io/sss/aqua/jrpc", "https://node-3.node.web3auth.io/sss/aqua/jrpc", "https://node-4.node.web3auth.io/sss/aqua/jrpc", "https://node-5.node.web3auth.io/sss/aqua/jrpc"},
+            new String[]{"https://node-1.node.web3auth.io/sss/aqua/jrpc", "https://node-2.node.web3auth.io/sss/aqua/jrpc", "https://node-3.node.web3auth.io/sss/aqua/jrpc", "https://node-4.node.web3auth.io/sss/aqua/jrpc", "https://node-5.node.web3auth.io/sss/aqua/jrpc"},
+            new String[]{"https://node-1.node.web3auth.io/rss/aqua", "https://node-2.node.web3auth.io/rss/aqua", "https://node-3.node.web3auth.io/rss/aqua", "https://node-4.node.web3auth.io/rss/aqua", "https://node-5.node.web3auth.io/rss/aqua"},
+            new String[]{"https://node-1.node.web3auth.io/tss/aqua", "https://node-2.node.web3auth.io/tss/aqua", "https://node-3.node.web3auth.io/tss/aqua", "https://node-4.node.web3auth.io/tss/aqua", "https://node-5.node.web3auth.io/tss/aqua"},
             new BigInteger[]{new BigInteger("1"), new BigInteger("2"), new BigInteger("3"), new BigInteger("4"), new BigInteger("5")},
             new TorusNodePub[]{new TorusNodePub("e0925898fee0e9e941fdca7ee88deec99939ae9407e923535c4d4a3a3ff8b052", "54b9fea924e3f3e40791f9987f4234ae4222412d65b74068032fa5d8b63375c1"),
                     new TorusNodePub("9124cf1e280aab32ba50dffd2de81cecabc13d82d2c1fe9de82f3b3523f9b637", "fca939a1ceb42ce745c55b21ef094f543b457630cb63a94ef4f1afeee2b1f107"),
@@ -65,10 +65,10 @@ public class Utils {
             false);
 
 
-    public static NodeDetails NODE_DETAILS_SAPPHIRE_MAINNET = new NodeDetails("1", new String[]{"https://sapphire-1.auth.network/sss/jrpc", "https://sapphire-2.auth.network/sss/jrpc", "https://sapphire-3.auth.network/sss/jrpc", "https://sapphire-4.auth.network/sss/jrpc", "https://sapphire-5.auth.network/sss/jrpc"},
-            new String[]{"https://sapphire-1.auth.network/sss/jrpc", "https://sapphire-2.auth.network/sss/jrpc", "https://sapphire-3.auth.network/sss/jrpc", "https://sapphire-4.auth.network/sss/jrpc", "https://sapphire-5.auth.network/sss/jrpc"},
-            new String[]{"https://sapphire-1.auth.network/rss", "https://sapphire-2.auth.network/rss", "https://sapphire-3.auth.network/rss", "https://sapphire-4.auth.network/rss", "https://sapphire-5.auth.network/rss"},
-            new String[]{"https://sapphire-1.auth.network/tss", "https://sapphire-2.auth.network/tss", "https://sapphire-3.auth.network/tss", "https://sapphire-4.auth.network/tss", "https://sapphire-5.auth.network/tss"},
+    public static NodeDetails NODE_DETAILS_SAPPHIRE_MAINNET = new NodeDetails("1", new String[]{"https://node-1.node.web3auth.io/sss/jrpc", "https://node-2.node.web3auth.io/sss/jrpc", "https://node-3.node.web3auth.io/sss/jrpc", "https://node-4.node.web3auth.io/sss/jrpc", "https://node-5.node.web3auth.io/sss/jrpc"},
+            new String[]{"https://node-1.node.web3auth.io/sss/jrpc", "https://node-2.node.web3auth.io/sss/jrpc", "https://node-3.node.web3auth.io/sss/jrpc", "https://node-4.node.web3auth.io/sss/jrpc", "https://node-5.node.web3auth.io/sss/jrpc"},
+            new String[]{"https://node-1.node.web3auth.io/rss", "https://node-2.node.web3auth.io/rss", "https://node-3.node.web3auth.io/rss", "https://node-4.node.web3auth.io/rss", "https://node-5.node.web3auth.io/rss"},
+            new String[]{"https://node-1.node.web3auth.io/tss", "https://node-2.node.web3auth.io/tss", "https://node-3.node.web3auth.io/tss", "https://node-4.node.web3auth.io/tss", "https://node-5.node.web3auth.io/tss"},
             new BigInteger[]{new BigInteger("1"), new BigInteger("2"), new BigInteger("3"), new BigInteger("4"), new BigInteger("5")},
             new TorusNodePub[]{new TorusNodePub("e0925898fee0e9e941fdca7ee88deec99939ae9407e923535c4d4a3a3ff8b052", "54b9fea924e3f3e40791f9987f4234ae4222412d65b74068032fa5d8b63375c1"),
                     new TorusNodePub("9124cf1e280aab32ba50dffd2de81cecabc13d82d2c1fe9de82f3b3523f9b637", "fca939a1ceb42ce745c55b21ef094f543b457630cb63a94ef4f1afeee2b1f107"),
@@ -77,10 +77,10 @@ public class Utils {
                     new TorusNodePub("3ecbb6a68afe72cf34ec6c0a12b5cb78a0d2e83ba402983b6adbc5f36219861a", "dc1031c5cc8f0472bd521a62a64ebca9e163902c247bf05937daf4ae835091e4")},
             false);
 
-    public static NodeDetails NODE_DETAILS_SAPPHIRE_DEVNET = new NodeDetails("1", new String[]{"https://sapphire-dev-2-1.authnetwork.dev/sss/jrpc", "https://sapphire-dev-2-2.authnetwork.dev/sss/jrpc", "https://sapphire-dev-2-3.authnetwork.dev/sss/jrpc", "https://sapphire-dev-2-4.authnetwork.dev/sss/jrpc", "https://sapphire-dev-2-5.authnetwork.dev/sss/jrpc"},
-            new String[]{"https://sapphire-dev-2-1.authnetwork.dev/sss/jrpc", "https://sapphire-dev-2-2.authnetwork.dev/sss/jrpc", "https://sapphire-dev-2-3.authnetwork.dev/sss/jrpc", "https://sapphire-dev-2-4.authnetwork.dev/sss/jrpc", "https://sapphire-dev-2-5.authnetwork.dev/sss/jrpc"},
-            new String[]{"https://sapphire-dev-2-1.authnetwork.dev/rss", "https://sapphire-dev-2-2.authnetwork.dev/rss", "https://sapphire-dev-2-3.authnetwork.dev/rss", "https://sapphire-dev-2-4.authnetwork.dev/rss", "https://sapphire-dev-2-5.authnetwork.dev/rss"},
-            new String[]{"https://sapphire-dev-2-1.authnetwork.dev/tss", "https://sapphire-dev-2-2.authnetwork.dev/tss", "https://sapphire-dev-2-3.authnetwork.dev/tss", "https://sapphire-dev-2-4.authnetwork.dev/tss", "https://sapphire-dev-2-5.authnetwork.dev/tss"},
+    public static NodeDetails NODE_DETAILS_SAPPHIRE_DEVNET = new NodeDetails("1", new String[]{"https://node-1.dev-node.web3auth.io/sss/jrpc", "https://node-2.dev-node.web3auth.io/sss/jrpc", "https://node-3.dev-node.web3auth.io/sss/jrpc", "https://node-4.dev-node.web3auth.io/sss/jrpc", "https://node-5.dev-node.web3auth.io/sss/jrpc"},
+            new String[]{"https://node-1.dev-node.web3auth.io/sss/jrpc", "https://node-2.dev-node.web3auth.io/sss/jrpc", "https://node-3.dev-node.web3auth.io/sss/jrpc", "https://node-4.dev-node.web3auth.io/sss/jrpc", "https://node-5.dev-node.web3auth.io/sss/jrpc"},
+            new String[]{"https://node-1.dev-node.web3auth.io/rss", "https://node-2.dev-node.web3auth.io/rss", "https://node-3.dev-node.web3auth.io/rss", "https://node-4.dev-node.web3auth.io/rss", "https://node-5.dev-node.web3auth.io/rss"},
+            new String[]{"https://node-1.dev-node.web3auth.io/tss", "https://node-2.dev-node.web3auth.io/tss", "https://node-3.dev-node.web3auth.io/tss", "https://node-4.dev-node.web3auth.io/tss", "https://node-5.dev-node.web3auth.io/tss"},
             new BigInteger[]{new BigInteger("1"), new BigInteger("2"), new BigInteger("3"), new BigInteger("4"), new BigInteger("5")},
             new TorusNodePub[]{new TorusNodePub("f74389b0a4c8d10d2a687ae575f69b20f412d41ab7f1fe6b358aa14871327247", "54e3a73098ed9bced3ef8821736e9794f9264a1420c0c7ad15d2fa617ba35ef7"),
                     new TorusNodePub("bc38813a6873e526087918507c78fc3a61624670ee851ecfb4f3bef55d027b5a", "ac4b21229f662a0aefdfdac21cf17c3261a392c74a8790db218b34e3e4c1d56a"),
@@ -130,4 +130,18 @@ public class Utils {
             put(TorusNetwork.SAPPHIRE_DEVNET, "https://signer.web3auth.io");
         }
     };
+
+    public static final Map<TorusNetwork, String> METADATA_MAP = new HashMap<TorusNetwork, String>() {
+        {
+            put(TorusNetwork.MAINNET, "https://metadata.web3auth.io");
+            put(TorusNetwork.TESTNET, "https://metadata.web3auth.io");
+            put(TorusNetwork.CYAN, "https://metadata.web3auth.io");
+            put(TorusNetwork.AQUA, "https://metadata.web3auth.io");
+            put(TorusNetwork.CELESTE, "https://metadata.web3auth.io");
+        }
+    };
+
+    public static final String FND_SERVER = "https://fnd.web3auth.io";
+
+    public static final String SESSION_SERVER = "https://session.web3auth.io";
 }

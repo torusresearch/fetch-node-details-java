@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.torusresearch.fetchnodedetails.FetchNodeDetails;
 import org.torusresearch.fetchnodedetails.types.NodeDetails;
 import org.torusresearch.fetchnodedetails.types.TorusNetwork;
+import org.torusresearch.fetchnodedetails.types.Utils;
 import org.torusresearch.fetchnodedetailstest.config.Config;
 
 import java.util.concurrent.ExecutionException;
@@ -68,5 +69,21 @@ class FetchNodeDetailsTest {
         fetchNodeDetails = new FetchNodeDetails();
         NodeDetails nodeDetails = this.fetchNodeDetails.getNodeDetails("google", "hello@tor.us").get();
         assertEquals(Config.SAPPHIRE_MAINNET, nodeDetails);
+    }
+
+    @DisplayName("Gets the Metadata url for SapphireMainnet")
+    @Test
+    public void shouldGetMetadataUrlSapphireMainnet() throws ExecutionException, InterruptedException {
+        fetchNodeDetails = new FetchNodeDetails();
+        String metadataUrl = this.fetchNodeDetails.getMetadataUrl().get();
+        assertEquals(Config.SAPPHIRE_MAINNET.getTorusNodeEndpoints()[0].replace("/sss/jrpc", "/metadata"), metadataUrl);
+    }
+
+    @DisplayName("Gets the Metadata url for Legacy Mainnet")
+    @Test
+    public void shouldGetMetadataUrlLegacyMainnet() throws ExecutionException, InterruptedException {
+        fetchNodeDetails = new FetchNodeDetails(TorusNetwork.MAINNET);
+        String metadataUrl = this.fetchNodeDetails.getMetadataUrl().get();
+        assertEquals(Utils.METADATA_MAP.get(TorusNetwork.MAINNET), metadataUrl);
     }
 }

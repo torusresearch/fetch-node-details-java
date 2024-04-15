@@ -34,7 +34,7 @@ public class FetchNodeDetails {
 
         CompletableFuture<NodeDetails> cf = new CompletableFuture<>();
         try {
-            String fndServerEndpoint = "https://fnd.web3auth.io/node-details";
+            String fndServerEndpoint = Utils.FND_SERVER + "/node-details";
             String url = fndServerEndpoint + "?network=" + this.torusNetwork + "&verifier=" + verifier + "&verifierId=" + verifierId;
             CompletableFuture<String> response = APIUtils.get(url);
             FNDResponse fndResponse =
@@ -52,6 +52,14 @@ public class FetchNodeDetails {
             cf.complete(this.nodeDetails);
         }
         return cf;
+    }
+
+    public CompletableFuture<String> getMetadataUrl() {
+        List<TorusNetwork> legacyNetworks = Arrays.asList(TorusNetwork.AQUA, TorusNetwork.CYAN, TorusNetwork.CELESTE, TorusNetwork.MAINNET, TorusNetwork.TESTNET);
+        if (legacyNetworks.contains(this.torusNetwork))
+            return CompletableFuture.supplyAsync(() -> Utils.METADATA_MAP.get(this.torusNetwork));
+
+        return this.getNodeDetails("test-verifier", "test-verifier-id").thenCompose((nodeDetails) -> CompletableFuture.supplyAsync(() -> nodeDetails.getTorusNodeEndpoints()[0].replace("/sss/jrpc", "/metadata")));
     }
 
     private void setNodeDetails(NodeDetails nodeDetails, boolean updated) {
