@@ -6,8 +6,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.torusresearch.fetchnodedetails.FetchNodeDetails;
 import org.torusresearch.fetchnodedetails.types.NodeDetails;
-import org.torusresearch.fetchnodedetails.types.TorusNetwork;
 import org.torusresearch.fetchnodedetails.types.Utils;
+import org.torusresearch.fetchnodedetails.types.Web3AuthNetwork;
 import org.torusresearch.fetchnodedetailstest.config.Config;
 
 import java.util.concurrent.ExecutionException;
@@ -18,7 +18,7 @@ class FetchNodeDetailsTest {
     @DisplayName("Gets the Node details for Mainnet")
     @Test
     public void shouldGetNodeDetailsMainnet() throws ExecutionException, InterruptedException {
-        fetchNodeDetails = new FetchNodeDetails(TorusNetwork.MAINNET);
+        fetchNodeDetails = new FetchNodeDetails(Web3AuthNetwork.MAINNET);
         NodeDetails nodeDetails = this.fetchNodeDetails.getNodeDetails("google", "hello@tor.us").get();
         assertEquals(Config.MAINNET, nodeDetails);
     }
@@ -26,7 +26,7 @@ class FetchNodeDetailsTest {
     @DisplayName("Gets the Node details for Testnet")
     @Test
     public void shouldGetNodeDetailsTestnet() throws ExecutionException, InterruptedException {
-        fetchNodeDetails = new FetchNodeDetails(TorusNetwork.TESTNET);
+        fetchNodeDetails = new FetchNodeDetails(Web3AuthNetwork.TESTNET);
         NodeDetails nodeDetails = this.fetchNodeDetails.getNodeDetails("google", "hello@tor.us").get();
         assertEquals(Config.TESTNET, nodeDetails);
     }
@@ -34,7 +34,7 @@ class FetchNodeDetailsTest {
     @DisplayName("Gets the Node details for Cyan")
     @Test
     public void shouldGetNodeDetailsCyan() throws ExecutionException, InterruptedException {
-        fetchNodeDetails = new FetchNodeDetails(TorusNetwork.CYAN);
+        fetchNodeDetails = new FetchNodeDetails(Web3AuthNetwork.CYAN);
         NodeDetails nodeDetails = this.fetchNodeDetails.getNodeDetails("google", "hello@tor.us").get();
         assertEquals(Config.CYAN, nodeDetails);
     }
@@ -42,7 +42,7 @@ class FetchNodeDetailsTest {
     @DisplayName("Gets the Node details for Aqua")
     @Test
     public void shouldGetNodeDetailsAqua() throws ExecutionException, InterruptedException {
-        fetchNodeDetails = new FetchNodeDetails(TorusNetwork.AQUA);
+        fetchNodeDetails = new FetchNodeDetails(Web3AuthNetwork.AQUA);
         NodeDetails nodeDetails = this.fetchNodeDetails.getNodeDetails("google", "hello@tor.us").get();
         assertEquals(Config.AQUA, nodeDetails);
     }
@@ -50,7 +50,7 @@ class FetchNodeDetailsTest {
     @DisplayName("Gets the Node details for Celeste")
     @Test
     public void shouldGetNodeDetailsCeleste() throws ExecutionException, InterruptedException {
-        fetchNodeDetails = new FetchNodeDetails(TorusNetwork.CELESTE);
+        fetchNodeDetails = new FetchNodeDetails(Web3AuthNetwork.CELESTE);
         NodeDetails nodeDetails = this.fetchNodeDetails.getNodeDetails("google", "hello@tor.us").get();
         assertEquals(Config.CELESTE, nodeDetails);
     }
@@ -58,7 +58,7 @@ class FetchNodeDetailsTest {
     @DisplayName("Gets the Node details for SapphireDevnet")
     @Test
     public void shouldGetNodeDetailsSapphireDevnet() throws ExecutionException, InterruptedException {
-        fetchNodeDetails = new FetchNodeDetails(TorusNetwork.SAPPHIRE_DEVNET);
+        fetchNodeDetails = new FetchNodeDetails(Web3AuthNetwork.SAPPHIRE_DEVNET);
         NodeDetails nodeDetails = this.fetchNodeDetails.getNodeDetails("google", "hello@tor.us").get();
         assertEquals(Config.SAPPHIRE_DEVNET, nodeDetails);
     }
@@ -82,8 +82,8 @@ class FetchNodeDetailsTest {
     @DisplayName("Gets the Metadata url for Legacy Mainnet")
     @Test
     public void shouldGetMetadataUrlLegacyMainnet() throws ExecutionException, InterruptedException {
-        fetchNodeDetails = new FetchNodeDetails(TorusNetwork.MAINNET);
+        fetchNodeDetails = new FetchNodeDetails(Web3AuthNetwork.MAINNET);
         String metadataUrl = this.fetchNodeDetails.getMetadataUrl().get();
-        assertEquals(Utils.METADATA_MAP.get(TorusNetwork.MAINNET), metadataUrl);
+        assertEquals(Utils.METADATA_MAP.get(Web3AuthNetwork.MAINNET), metadataUrl);
     }
 }

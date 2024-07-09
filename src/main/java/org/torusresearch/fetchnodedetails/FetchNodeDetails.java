@@ -5,8 +5,8 @@ import com.google.gson.GsonBuilder;
 import org.torusresearch.fetchnodedetails.types.APIUtils;
 import org.torusresearch.fetchnodedetails.types.FNDResponse;
 import org.torusresearch.fetchnodedetails.types.NodeDetails;
-import org.torusresearch.fetchnodedetails.types.TorusNetwork;
 import org.torusresearch.fetchnodedetails.types.Utils;
+import org.torusresearch.fetchnodedetails.types.Web3AuthNetwork;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,25 +17,25 @@ public class FetchNodeDetails {
     private List<String> multi_cluster_networks = Arrays.asList("celeste");
 
     private final NodeDetails nodeDetails = new NodeDetails();
-    private TorusNetwork torusNetwork = TorusNetwork.SAPPHIRE_MAINNET;
+    private Web3AuthNetwork web3AuthNetwork = Web3AuthNetwork.SAPPHIRE_MAINNET;
 
     public FetchNodeDetails() {
-        this(TorusNetwork.SAPPHIRE_MAINNET);
+        this(Web3AuthNetwork.SAPPHIRE_MAINNET);
     }
 
-    public FetchNodeDetails(TorusNetwork network) {
-        this.torusNetwork = network;
+    public FetchNodeDetails(Web3AuthNetwork network) {
+        this.web3AuthNetwork = network;
     }
 
     public CompletableFuture<NodeDetails> getNodeDetails(String verifier, String verifierId) {
         // For mainnet & ropsten, verifierId combination doesn't change the network details
-        if (this.nodeDetails.getUpdated() && !(multi_cluster_networks.contains(this.torusNetwork.name())))
+        if (this.nodeDetails.getUpdated() && !(multi_cluster_networks.contains(this.web3AuthNetwork.name())))
             return CompletableFuture.supplyAsync(() -> this.nodeDetails);
 
         CompletableFuture<NodeDetails> cf = new CompletableFuture<>();
         try {
             String fndServerEndpoint = Utils.FND_SERVER + "/node-details";
-            String url = fndServerEndpoint + "?network=" + this.torusNetwork + "&verifier=" + verifier + "&verifierId=" + verifierId;
+            String url = fndServerEndpoint + "?network=" + this.web3AuthNetwork + "&verifier=" + verifier + "&verifierId=" + verifierId;
             CompletableFuture<String> response = APIUtils.get(url);
             FNDResponse fndResponse =
                     new GsonBuilder().disableHtmlEscaping().create().fromJson(response.get(), FNDResponse.class);
@@ -45,7 +45,7 @@ public class FetchNodeDetails {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        NodeDetails nodeDetails = Utils.fetchLocalConfig(this.torusNetwork);
+        NodeDetails nodeDetails = Utils.fetchLocalConfig(this.web3AuthNetwork);
         if (nodeDetails == null) cf.completeExceptionally(new Exception("Failed to fetch node details"));
         else {
             this.setNodeDetails(nodeDetails, false);
@@ -55,9 +55,9 @@ public class FetchNodeDetails {
     }
 
     public CompletableFuture<String> getMetadataUrl() {
-        List<TorusNetwork> legacyNetworks = Arrays.asList(TorusNetwork.AQUA, TorusNetwork.CYAN, TorusNetwork.CELESTE, TorusNetwork.MAINNET, TorusNetwork.TESTNET);
-        if (legacyNetworks.contains(this.torusNetwork))
-            return CompletableFuture.supplyAsync(() -> Utils.METADATA_MAP.get(this.torusNetwork));
+        List<Web3AuthNetwork> legacyNetworks = Arrays.asList(Web3AuthNetwork.AQUA, Web3AuthNetwork.CYAN, Web3AuthNetwork.CELESTE, Web3AuthNetwork.MAINNET, Web3AuthNetwork.TESTNET);
+        if (legacyNetworks.contains(this.web3AuthNetwork))
+            return CompletableFuture.supplyAsync(() -> Utils.METADATA_MAP.get(this.web3AuthNetwork));
 
         return this.getNodeDetails("test-verifier", "test-verifier-id").thenCompose((nodeDetails) -> CompletableFuture.supplyAsync(() -> nodeDetails.getTorusNodeEndpoints()[0].replace("/sss/jrpc", "/metadata")));
     }

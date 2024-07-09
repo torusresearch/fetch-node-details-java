@@ -1,6 +1,6 @@
 package org.torusresearch.fetchnodedetails.types;
 
-public enum TorusNetwork {
+public enum Web3AuthNetwork {
     MAINNET("mainnet"),
     TESTNET("testnet"),
     CYAN("cyan"),
@@ -11,7 +11,7 @@ public enum TorusNetwork {
 
     private final String val;
 
-    TorusNetwork(String s) {
+    Web3AuthNetwork(String s) {
         this.val = s;
     }
 
