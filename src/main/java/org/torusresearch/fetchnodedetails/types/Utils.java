@@ -6,13 +6,14 @@ import java.util.Map;
 
 public class Utils {
 
-    public static HashMap<String, LegacyNetworkMigrationInfo> LEGACY_NETWORKS_ROUTE_MAP = new HashMap<String, LegacyNetworkMigrationInfo>() {
+    public static final Map<Web3AuthNetwork, String> NETWORK_MAP = new HashMap<Web3AuthNetwork, String>() {
         {
-            put(TorusNetwork.AQUA.toString(), new LegacyNetworkMigrationInfo(true, "aqua", TorusNetwork.SAPPHIRE_MAINNET));
-            put(TorusNetwork.CELESTE.toString(), new LegacyNetworkMigrationInfo(false, "celeste", TorusNetwork.SAPPHIRE_MAINNET));
-            put(TorusNetwork.CYAN.toString(), new LegacyNetworkMigrationInfo(true, "cyan", TorusNetwork.SAPPHIRE_MAINNET));
-            put(TorusNetwork.MAINNET.toString(), new LegacyNetworkMigrationInfo(true, "mainnet", TorusNetwork.SAPPHIRE_MAINNET));
-            put(TorusNetwork.TESTNET.toString(), new LegacyNetworkMigrationInfo(true, "teal", TorusNetwork.SAPPHIRE_DEVNET));
+            put(Web3AuthNetwork.MAINNET, "mainnet");
+            put(Web3AuthNetwork.TESTNET, "goerli");
+            put(Web3AuthNetwork.CYAN, "polygon-mainnet");
+            put(Web3AuthNetwork.AQUA, "polygon-mainnet");
+            put(Web3AuthNetwork.CELESTE, "polygon-mainnet");
+
         }
     };
 
@@ -88,8 +89,37 @@ public class Utils {
                     new TorusNodePub("7bcb058d4c6ffc6ba4bfdfd93d141af35a66338a62c7c27cdad2ae3f8289b767", "336ab1935e41ed4719e162587f0ab55518db4207a1eb36cc72303f1b86689d2b"),
                     new TorusNodePub("bf12a136ef94399ea098f926f04e26a4ec4ac70f69cce274e8893704c4951773", "bdd44828020f52ce510e026338216ada184a6867eb4e19fb4c2d495d4a7e15e4")},
             false);
+    public static final Map<Web3AuthNetwork, String> SIGNER_MAP = new HashMap<Web3AuthNetwork, String>() {
+        {
+            put(Web3AuthNetwork.MAINNET, "https://signer.web3auth.io");
+            put(Web3AuthNetwork.TESTNET, "https://signer.web3auth.io");
+            put(Web3AuthNetwork.CYAN, "https://signer-polygon.web3auth.io");
+            put(Web3AuthNetwork.AQUA, "https://signer-polygon.web3auth.io");
+            put(Web3AuthNetwork.CELESTE, "https://signer-polygon.web3auth.io");
+            put(Web3AuthNetwork.SAPPHIRE_MAINNET, "https://signer.web3auth.io");
+            put(Web3AuthNetwork.SAPPHIRE_DEVNET, "https://signer.web3auth.io");
+        }
+    };
+    public static final Map<Web3AuthNetwork, String> METADATA_MAP = new HashMap<Web3AuthNetwork, String>() {
+        {
+            put(Web3AuthNetwork.MAINNET, "https://metadata.web3auth.io");
+            put(Web3AuthNetwork.TESTNET, "https://metadata.web3auth.io");
+            put(Web3AuthNetwork.CYAN, "https://metadata.web3auth.io");
+            put(Web3AuthNetwork.AQUA, "https://metadata.web3auth.io");
+            put(Web3AuthNetwork.CELESTE, "https://metadata.web3auth.io");
+        }
+    };
+    public static HashMap<String, LegacyNetworkMigrationInfo> LEGACY_NETWORKS_ROUTE_MAP = new HashMap<String, LegacyNetworkMigrationInfo>() {
+        {
+            put(Web3AuthNetwork.AQUA.toString(), new LegacyNetworkMigrationInfo(true, "aqua", Web3AuthNetwork.SAPPHIRE_MAINNET));
+            put(Web3AuthNetwork.CELESTE.toString(), new LegacyNetworkMigrationInfo(false, "celeste", Web3AuthNetwork.SAPPHIRE_MAINNET));
+            put(Web3AuthNetwork.CYAN.toString(), new LegacyNetworkMigrationInfo(true, "cyan", Web3AuthNetwork.SAPPHIRE_MAINNET));
+            put(Web3AuthNetwork.MAINNET.toString(), new LegacyNetworkMigrationInfo(true, "mainnet", Web3AuthNetwork.SAPPHIRE_MAINNET));
+            put(Web3AuthNetwork.TESTNET.toString(), new LegacyNetworkMigrationInfo(true, "teal", Web3AuthNetwork.SAPPHIRE_DEVNET));
+        }
+    };
 
-    public static NodeDetails fetchLocalConfig(TorusNetwork network) {
+    public static NodeDetails fetchLocalConfig(Web3AuthNetwork network) {
         NodeDetails nodeDetails = null;
         switch (network) {
             case SAPPHIRE_DEVNET:
@@ -107,39 +137,6 @@ public class Utils {
         }
         return nodeDetails;
     }
-
-    public static final Map<TorusNetwork, String> NETWORK_MAP = new HashMap<TorusNetwork, String>() {
-        {
-            put(TorusNetwork.MAINNET, "mainnet");
-            put(TorusNetwork.TESTNET, "goerli");
-            put(TorusNetwork.CYAN, "polygon-mainnet");
-            put(TorusNetwork.AQUA, "polygon-mainnet");
-            put(TorusNetwork.CELESTE, "polygon-mainnet");
-
-        }
-    };
-
-    public static final Map<TorusNetwork, String> SIGNER_MAP = new HashMap<TorusNetwork, String>() {
-        {
-            put(TorusNetwork.MAINNET, "https://signer.web3auth.io");
-            put(TorusNetwork.TESTNET, "https://signer.web3auth.io");
-            put(TorusNetwork.CYAN, "https://signer-polygon.web3auth.io");
-            put(TorusNetwork.AQUA, "https://signer-polygon.web3auth.io");
-            put(TorusNetwork.CELESTE, "https://signer-polygon.web3auth.io");
-            put(TorusNetwork.SAPPHIRE_MAINNET, "https://signer.web3auth.io");
-            put(TorusNetwork.SAPPHIRE_DEVNET, "https://signer.web3auth.io");
-        }
-    };
-
-    public static final Map<TorusNetwork, String> METADATA_MAP = new HashMap<TorusNetwork, String>() {
-        {
-            put(TorusNetwork.MAINNET, "https://metadata.web3auth.io");
-            put(TorusNetwork.TESTNET, "https://metadata.web3auth.io");
-            put(TorusNetwork.CYAN, "https://metadata.web3auth.io");
-            put(TorusNetwork.AQUA, "https://metadata.web3auth.io");
-            put(TorusNetwork.CELESTE, "https://metadata.web3auth.io");
-        }
-    };
 
     public static final String FND_SERVER = "https://fnd.web3auth.io";
 

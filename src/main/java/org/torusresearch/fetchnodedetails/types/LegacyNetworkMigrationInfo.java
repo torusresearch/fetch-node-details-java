@@ -4,10 +4,10 @@ public class LegacyNetworkMigrationInfo {
 
     private Boolean migrationCompleted = false;
     private String networkIdentifier;
-    private TorusNetwork networkMigratedTo;
+    private Web3AuthNetwork networkMigratedTo;
 
 
-    public LegacyNetworkMigrationInfo(Boolean migrationCompleted, String networkIdentifier, TorusNetwork networkMigratedTo) {
+    public LegacyNetworkMigrationInfo(Boolean migrationCompleted, String networkIdentifier, Web3AuthNetwork networkMigratedTo) {
         this.migrationCompleted = migrationCompleted;
         this.networkIdentifier = networkIdentifier;
         this.networkMigratedTo = networkMigratedTo;
@@ -21,7 +21,7 @@ public class LegacyNetworkMigrationInfo {
         return networkIdentifier;
     }
 
-    public TorusNetwork getNetworkMigratedTo() {
+    public Web3AuthNetwork getNetworkMigratedTo() {
         return networkMigratedTo;
     }
 }
