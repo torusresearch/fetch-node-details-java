@@ -18,4 +18,13 @@ public enum Web3AuthNetwork {
     public String toString() {
         return val;
     }
+
+    public boolean isLegacyNetwork() {
+        for (LegacyNetwork legacyNetwork : LegacyNetwork.values()) {
+            if (legacyNetwork.toString().equals(val)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
