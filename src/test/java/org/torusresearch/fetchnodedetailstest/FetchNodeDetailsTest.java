@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.torusresearch.fetchnodedetails.FetchNodeDetails;
+import org.torusresearch.fetchnodedetails.types.BuildEnv;
 import org.torusresearch.fetchnodedetails.types.NodeDetails;
 import org.torusresearch.fetchnodedetails.types.Utils;
 import org.torusresearch.fetchnodedetails.types.Web3AuthNetwork;
@@ -84,6 +85,6 @@ class FetchNodeDetailsTest {
     public void shouldGetMetadataUrlLegacyMainnet() throws ExecutionException, InterruptedException {
         fetchNodeDetails = new FetchNodeDetails(Web3AuthNetwork.MAINNET);
         String metadataUrl = this.fetchNodeDetails.getMetadataUrl().get();
-        assertEquals(Utils.METADATA_MAP.get(Web3AuthNetwork.MAINNET), metadataUrl);
+        assertEquals(Utils.LEGACY_METADATA_MAP.get(BuildEnv.PRODUCTION), metadataUrl);
     }
 }
